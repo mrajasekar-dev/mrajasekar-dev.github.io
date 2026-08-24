@@ -30,9 +30,13 @@ export const metadata: Metadata = {
     title: `${siteConfig.name} — ${siteConfig.title}`,
     description: siteConfig.description,
   },
+  // This branch (GitHub Pages) is a static mirror; the canonical, fully-
+  // featured version of this site is deployed on Vercel from the `vercel`
+  // branch. Kept out of search results so the two don't compete as
+  // duplicate content.
   robots: {
-    index: true,
-    follow: true,
+    index: false,
+    follow: false,
   },
 };
 
