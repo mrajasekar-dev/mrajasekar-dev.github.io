@@ -12,6 +12,9 @@ export const siteConfig = {
   url: "https://mrajasekar-dev.github.io",
   email: "mrajasekar.dev@gmail.com",
   linkedin: "https://www.linkedin.com/in/mrajasekar-dev/",
+  github: "https://github.com/mrajasekar-dev",
+  twitter: "https://x.com/unorthodox_raja",
+  twitterHandle: "@unorthodox_raja",
   location: "Bengaluru, India",
   serviceArea: "Based in Bengaluru, India — working remotely with growing companies worldwide.",
   keywords: [

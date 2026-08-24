@@ -29,6 +29,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: `${siteConfig.name} — ${siteConfig.title}`,
     description: siteConfig.description,
+    creator: siteConfig.twitterHandle,
   },
   // This branch (GitHub Pages) is a static mirror; the canonical, fully-
   // featured version of this site is deployed on Vercel from the `vercel`
@@ -52,7 +53,7 @@ const jsonLd = [
     jobTitle: siteConfig.title,
     url: siteConfig.url,
     email: siteConfig.email,
-    sameAs: [siteConfig.linkedin],
+    sameAs: [siteConfig.linkedin, siteConfig.github, siteConfig.twitter],
     address: {
       "@type": "PostalAddress",
       addressLocality: "Bengaluru",

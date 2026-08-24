@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { LinkedinIcon } from "@/components/icons";
+import { GithubIcon, LinkedinIcon, XIcon } from "@/components/icons";
 import { siteConfig } from "@/config/site";
 
 export function Footer() {
@@ -33,6 +33,26 @@ export function Footer() {
               <LinkedinIcon className="size-4" />
               LinkedIn
             </a>
+            <div className="mt-1 flex items-center gap-4 sm:justify-end">
+              <a
+                href={siteConfig.github}
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label="GitHub"
+                className="text-muted-foreground hover:text-brand transition-colors"
+              >
+                <GithubIcon className="size-[18px]" />
+              </a>
+              <a
+                href={siteConfig.twitter}
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label="X (Twitter)"
+                className="text-muted-foreground hover:text-brand transition-colors"
+              >
+                <XIcon className="size-[18px]" />
+              </a>
+            </div>
           </div>
         </div>
 
