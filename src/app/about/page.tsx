@@ -40,7 +40,7 @@ export default function AboutPage() {
           </div>
           <div>
             <SectionHeader as="h1" eyebrow="About" title={siteConfig.name} />
-            <p className="mt-5 max-w-md text-lg leading-relaxed text-muted-foreground">
+            <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">
               {intro.body}
             </p>
           </div>

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Section } from "@/components/section";
 import { SectionHeader } from "@/components/section-header";
 import { ContactForm } from "@/components/contact-form";
+import { LinkedinIcon } from "@/components/icons";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -29,8 +30,9 @@ export default function ContactPage() {
           href={siteConfig.linkedin}
           target="_blank"
           rel="noreferrer noopener"
-          className="text-brand hover:underline underline-offset-4"
+          className="inline-flex items-center gap-1.5 text-brand hover:underline underline-offset-4"
         >
+          <LinkedinIcon className="size-4" />
           Connect on LinkedIn
         </a>
       </div>

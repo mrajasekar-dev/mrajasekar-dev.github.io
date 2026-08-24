@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { LinkedinIcon } from "@/components/icons";
 import { siteConfig } from "@/config/site";
 
 export function Footer() {
@@ -27,8 +28,9 @@ export function Footer() {
               href={siteConfig.linkedin}
               target="_blank"
               rel="noreferrer noopener"
-              className="text-foreground hover:text-brand transition-colors"
+              className="inline-flex items-center gap-1.5 text-foreground hover:text-brand transition-colors sm:justify-end"
             >
+              <LinkedinIcon className="size-4" />
               LinkedIn
             </a>
           </div>
