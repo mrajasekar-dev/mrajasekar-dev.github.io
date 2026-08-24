@@ -7,6 +7,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { Toaster } from "@/components/ui/sonner";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -92,6 +93,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
+        <Toaster position="bottom-right" />
         <Analytics />
         <SpeedInsights />
       </body>

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Section } from "@/components/section";
 import { SectionHeader } from "@/components/section-header";
 import { ContactForm } from "@/components/contact-form";
+import { Scheduler } from "@/components/scheduler";
 import { LinkedinIcon } from "@/components/icons";
 import { siteConfig } from "@/config/site";
 
@@ -38,7 +39,24 @@ export default function ContactPage() {
       </div>
 
       <div className="mt-8 border-t border-border/70 pt-8">
-        <ContactForm />
+        <h2 className="text-lg font-semibold">Book a call directly</h2>
+        <p className="mt-1 text-sm text-muted-foreground">
+          Pick a time that works for you — you&rsquo;ll get a calendar invite with a Google
+          Meet link right away.
+        </p>
+        <div className="mt-5">
+          <Scheduler />
+        </div>
+      </div>
+
+      <div className="mt-10 border-t border-border/70 pt-8">
+        <h2 className="text-lg font-semibold">Or send a message instead</h2>
+        <p className="mt-1 text-sm text-muted-foreground">
+          Prefer to write out the details first? This works too.
+        </p>
+        <div className="mt-5">
+          <ContactForm />
+        </div>
       </div>
     </Section>
   );
