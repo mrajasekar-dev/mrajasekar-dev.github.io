@@ -9,7 +9,7 @@ export const siteConfig = {
   tagline: "Salesforce should make your business easier to run.",
   description:
     "I help growing companies design and implement Salesforce around the way their people actually work — from the first requirements conversation to production and beyond.",
-  url: "https://mrajasekar-dev.github.io",
+  url: "https://rajasekar-m.vercel.app",
   email: "mrajasekar.dev@gmail.com",
   linkedin: "https://www.linkedin.com/in/mrajasekar-dev/",
   location: "Bengaluru, India",

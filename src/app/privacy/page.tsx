@@ -17,23 +17,23 @@ export default function PrivacyPage() {
       <SectionHeader as="h1" eyebrow="Legal" title="Privacy" />
       <div className="mt-6 flex flex-col gap-4 text-sm leading-relaxed text-muted-foreground">
         <p>
-          This site is fully static — there is no server behind it, and nothing
-          you type is transmitted anywhere or stored by the site itself. The
-          contact form pre-fills an email to {siteConfig.email} using your own
-          email client; it only sends if you review and hit send from there.
+          This site collects only what you submit through the contact form: your
+          name, work email, company, role, and the details you choose to share
+          about your project. That information is used solely to respond to you.
         </p>
         <p>
-          This site runs no analytics or tracking scripts of any kind — no page
-          views, no cookies, no visitor identifiers are collected.
+          No analytics on this site tie page views to your identity. Aggregate,
+          anonymous traffic and performance metrics (page views, referrers, Core
+          Web Vitals) are collected via Vercel Analytics and Speed Insights to
+          understand how the site is used and to keep it fast.
         </p>
         <p>
-          Any message you do send by email is handled the same way as any other
-          email you&rsquo;d send {siteConfig.name} directly — it&rsquo;s never sold or
-          shared with third parties. Questions can go to{" "}
+          Your contact details are never sold or shared with third parties. If
+          you&rsquo;d like anything you&rsquo;ve submitted removed, email{" "}
           <a href={`mailto:${siteConfig.email}`} className="text-brand hover:underline underline-offset-4">
             {siteConfig.email}
-          </a>
-          .
+          </a>{" "}
+          and it will be handled directly.
         </p>
       </div>
     </Section>
