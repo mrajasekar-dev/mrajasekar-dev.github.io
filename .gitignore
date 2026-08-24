@@ -24,6 +24,9 @@
 .DS_Store
 *.pem
 
+# raw source photos (unprocessed personal photos, not the ones used on the site)
+/photos
+
 # debug
 npm-debug.log*
 yarn-debug.log*
