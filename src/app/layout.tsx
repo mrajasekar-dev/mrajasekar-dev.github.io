@@ -32,6 +32,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: `${siteConfig.name} — ${siteConfig.title}`,
     description: siteConfig.description,
+    creator: siteConfig.twitterHandle,
   },
   robots: {
     index: true,
@@ -51,7 +52,7 @@ const jsonLd = [
     jobTitle: siteConfig.title,
     url: siteConfig.url,
     email: siteConfig.email,
-    sameAs: [siteConfig.linkedin],
+    sameAs: [siteConfig.linkedin, siteConfig.github, siteConfig.twitter],
     address: {
       "@type": "PostalAddress",
       addressLocality: "Bengaluru",
