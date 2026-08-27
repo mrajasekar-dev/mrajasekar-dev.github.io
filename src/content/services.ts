@@ -5,7 +5,7 @@ export const primaryService = {
   stages: [
     {
       name: "Discovery",
-      body: "Understand the business, users, workflows and outcomes before any solution is proposed.",
+      body: "Understand the business, users, and outcome before proposing a solution.",
     },
     {
       name: "Solution Design",
@@ -17,19 +17,19 @@ export const primaryService = {
     },
     {
       name: "Build",
-      body: "Configuration, automation, Apex, LWC and integrations where appropriate.",
+      body: "Configuration, automation, Apex, LWC, and integrations.",
     },
     {
       name: "Validate",
-      body: "Functional testing, technical QA and user acceptance testing.",
+      body: "Functional testing, technical QA, and user acceptance testing.",
     },
     {
       name: "Launch",
-      body: "Controlled deployment, enablement and production readiness.",
+      body: "Controlled deployment, enablement, and production readiness.",
     },
     {
       name: "Stabilize",
-      body: "Hypercare and transition into ongoing support if needed.",
+      body: "Hypercare, then handoff to ongoing support if needed.",
     },
   ],
 } as const;
