@@ -20,7 +20,7 @@ export const experience: ExperienceEntry[] = [
     period: "Feb 2026 – Present",
     location: "Bengaluru, India",
     bullets: [
-      "Architected a clinical trial management platform for a US medical device company, integrating internal LWC interfaces and external Next.js/React dashboards via Salesforce External Client App Credentials.",
+      "Architected a clinical trial management platform on Health Cloud for a US medical device company, integrating internal LWC interfaces and external Next.js/React dashboards via Salesforce External Client App Credentials.",
       "Pioneered AI-first development using Agentforce, Claude Code, MCP servers, and agentic frameworks, reducing multi-week feature development cycles to single-day deployments.",
       "Engineered multi-agent orchestration with deterministic guardrails governing Salesforce read/write permissions, CI/CD pipelines, and token-optimized prompt routing, utilizing data grounding and RAG for responsible AI outputs.",
       "Delivered enterprise identity and calendar federation, resolving native Salesforce Activity object limitations through custom Screen Flows, Microsoft Graph API, and Azure AD SAML SSO.",
@@ -39,10 +39,10 @@ export const experience: ExperienceEntry[] = [
       height: 1800,
     },
     bullets: [
-      "Engineered high-volume data architectures handling millions of records for enterprise healthcare and non-profit clients, using asynchronous Apex, Platform Events, and the Trigger Actions Framework.",
-      "Designed bulkified flows and external processing pipelines optimized for governor limits and high-traffic performance in complex multi-cloud deployments.",
-      "Built real-time SAP–Salesforce integrations via custom REST APIs, powering an event-driven dealer management system for an Indian EV OEM.",
-      "Refactored legacy codebases and eliminated technical debt, driving Apex test coverage from 50% to 85%, and executed complex data migrations for a US non-profit CRM.",
+      "Engineered high-volume, HIPAA-aligned data architectures handling millions of records for enterprise Health Cloud and Nonprofit Cloud clients, using asynchronous Apex, Platform Events, and the Trigger Actions Framework.",
+      "Designed bulkified flows and external processing pipelines optimized for governor limits and high-traffic performance across Sales Cloud, Service Cloud, and Health Cloud deployments.",
+      "Built real-time SAP–Salesforce integrations via custom REST APIs, powering an event-driven Sales Cloud and Service Cloud dealer management system for an Indian EV OEM.",
+      "Refactored legacy codebases and eliminated technical debt, driving Apex test coverage from 50% to 85%, and executed complex data migrations for a US Nonprofit Cloud CRM.",
     ],
   },
 ];
@@ -73,6 +73,7 @@ export const skillGroups = [
       "Flow Builder",
       "Platform Events",
       "Trigger Actions Framework",
+      "Sales Cloud, Service Cloud, Health Cloud, Nonprofit Cloud",
       "Data Cloud (data harmonization, unified data models)",
     ],
   },
