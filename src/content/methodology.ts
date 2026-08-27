@@ -2,7 +2,7 @@ export const principles = [
   {
     number: "01",
     title: "Understand before building",
-    body: "We start with the business problem, not the Salesforce feature.",
+    body: "Start with the business problem, not the Salesforce feature.",
   },
   {
     number: "02",
@@ -12,7 +12,7 @@ export const principles = [
   {
     number: "03",
     title: "Design for the person using Salesforce",
-    body: "Every screen, field and workflow should reduce unnecessary effort.",
+    body: "Every screen, field, and workflow should reduce effort, not add to it.",
   },
   {
     number: "04",
@@ -22,21 +22,21 @@ export const principles = [
   {
     number: "05",
     title: "Surface problems early",
-    body: "Bad news doesn't become better because it arrives later.",
+    body: "Bad news doesn't improve with time.",
   },
   {
     number: "06",
     title: "Don't knowingly create technical debt",
-    body: "If there is a trade-off, explain it and let the client make an informed decision.",
+    body: "If there's a trade-off, it gets explained — not hidden.",
   },
   {
     number: "07",
     title: "Leave the client stronger",
-    body: "Documentation, knowledge transfer and ownership are part of delivery.",
+    body: "Documentation, knowledge transfer, and ownership are part of delivery.",
   },
 ] as const;
 
 export const engineeringNote = {
   heading: "Modern engineering, used responsibly.",
-  body: "AI can accelerate implementation. It doesn't replace architecture, requirements understanding, testing, security, code review, human judgment, or accountability.",
+  body: "AI can accelerate implementation. It doesn't replace architecture, testing, security, or judgment.",
 } as const;

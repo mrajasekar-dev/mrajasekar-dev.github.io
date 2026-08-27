@@ -3,6 +3,9 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { LinkedinIcon } from "@/components/icons";
 import { primaryCta, secondaryCta, siteConfig } from "@/config/site";
+import { certifications } from "@/content/about";
+
+const salesforceCertifications = certifications.filter((c) => c.startsWith("Salesforce"));
 
 export function Hero() {
   return (
@@ -35,6 +38,10 @@ export function Hero() {
         Built for growing companies implementing Salesforce for the first time —
         and for teams that already have Salesforce and need senior engineering
         to get it right. Engagements are fully remote.
+      </p>
+
+      <p className="mt-3 max-w-xl text-xs text-muted-foreground">
+        Salesforce Certified — {salesforceCertifications.join(" · ")}
       </p>
     </section>
   );
