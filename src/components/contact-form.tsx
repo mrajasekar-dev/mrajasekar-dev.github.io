@@ -6,13 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { contactFormSchema } from "@/lib/validations";
 import { siteConfig } from "@/config/site";
 
@@ -20,11 +13,7 @@ const initialValues = {
   name: "",
   email: "",
   company: "",
-  role: "",
-  goal: "",
-  currentSituation: "",
-  projectSize: "",
-  preferredContact: "either" as "email" | "linkedin" | "either",
+  message: "",
 };
 
 function Field({
@@ -46,12 +35,6 @@ function Field({
     </div>
   );
 }
-
-const contactLabels: Record<string, string> = {
-  email: "Email",
-  linkedin: "LinkedIn",
-  either: "Either",
-};
 
 export function ContactForm() {
   const [values, setValues] = useState(initialValues);
@@ -83,13 +66,9 @@ export function ContactForm() {
       `Name: ${data.name}`,
       `Work email: ${data.email}`,
       `Company: ${data.company}`,
-      `Role: ${data.role}`,
       "",
-      `What they're trying to accomplish: ${data.goal}`,
-      data.currentSituation ? `Current Salesforce situation: ${data.currentSituation}` : null,
-      data.projectSize ? `Approximate project size: ${data.projectSize}` : null,
-      `Preferred contact method: ${contactLabels[data.preferredContact]}`,
-    ].filter((line): line is string => line !== null);
+      data.message,
+    ];
 
     const mailto = `mailto:${siteConfig.email}?subject=${encodeURIComponent(
       subject,
@@ -133,70 +112,27 @@ export function ContactForm() {
             onChange={(e) => update("email", e.target.value)}
           />
         </Field>
-        <Field id="company" label="Company" error={fieldErrors.company}>
-          <Input
-            id="company"
-            autoComplete="organization"
-            required
-            value={values.company}
-            onChange={(e) => update("company", e.target.value)}
-          />
-        </Field>
-        <Field id="role" label="Role" error={fieldErrors.role}>
-          <Input
-            id="role"
-            required
-            value={values.role}
-            onChange={(e) => update("role", e.target.value)}
-          />
-        </Field>
       </div>
 
-      <Field id="goal" label="What are you trying to accomplish?" error={fieldErrors.goal}>
-        <Textarea
-          id="goal"
-          rows={4}
+      <Field id="company" label="Company" error={fieldErrors.company}>
+        <Input
+          id="company"
+          autoComplete="organization"
           required
-          value={values.goal}
-          onChange={(e) => update("goal", e.target.value)}
+          value={values.company}
+          onChange={(e) => update("company", e.target.value)}
         />
       </Field>
 
-      <div className="grid gap-5 sm:grid-cols-2">
-        <Field id="currentSituation" label="Current Salesforce situation (optional)">
-          <Textarea
-            id="currentSituation"
-            rows={2}
-            value={values.currentSituation}
-            onChange={(e) => update("currentSituation", e.target.value)}
-          />
-        </Field>
-        <div className="flex flex-col gap-5">
-          <Field id="projectSize" label="Approximate project size (optional)">
-            <Input
-              id="projectSize"
-              placeholder="e.g. a few weeks, a quarter"
-              value={values.projectSize}
-              onChange={(e) => update("projectSize", e.target.value)}
-            />
-          </Field>
-          <Field id="preferredContact" label="Preferred contact method">
-            <Select
-              value={values.preferredContact}
-              onValueChange={(v) => update("preferredContact", v as typeof values.preferredContact)}
-            >
-              <SelectTrigger id="preferredContact" className="w-full">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="email">Email</SelectItem>
-                <SelectItem value="linkedin">LinkedIn</SelectItem>
-                <SelectItem value="either">Either</SelectItem>
-              </SelectContent>
-            </Select>
-          </Field>
-        </div>
-      </div>
+      <Field id="message" label="What are you trying to accomplish?" error={fieldErrors.message}>
+        <Textarea
+          id="message"
+          rows={4}
+          required
+          value={values.message}
+          onChange={(e) => update("message", e.target.value)}
+        />
+      </Field>
 
       <Button type="submit" size="lg" className="h-11 w-full px-6 text-[0.95rem] sm:w-auto">
         Start a conversation →
