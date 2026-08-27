@@ -25,7 +25,13 @@ The connective piece is MCP — the Model Context Protocol, an open standard for
 
 The detail worth sitting with as an architect: permission enforcement happens on the Salesforce side of that boundary, not the model side. If a user doesn't have field-level access to a record, the MCP server doesn't return it — full stop, before Claude ever sees it. Sharing rules, profiles, permission sets: none of that gets reinvented for the AI layer. It's the same governance model doing the same job it's always done, just fronted by a different interface.
 
-![Diagram showing a request flowing from a user to the Atlas Reasoning Engine (Claude via Amazon Bedrock), to an MCP server enforcing sharing rules, to Salesforce actions like Flow, Apex, and Data Cloud.](/blog/claudeforce-architecture.svg)
+```text
+User asks a question
+  -> Atlas Reasoning Engine (Claude) decides which action answers it
+  -> MCP server checks sharing rules + FLS for the current user
+  -> Only permitted data/actions reach the model
+  -> Reasoning Engine composes the response
+```
 
 ## What's confirmed, and what's still open
 

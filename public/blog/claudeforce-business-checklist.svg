@@ -1,39 +1,41 @@
-<svg viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif">
+<svg viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
   <title id="title">Three things to do before rolling out Claudeforce</title>
   <desc id="desc">A simple three-step checklist: ask what's actually included, pilot on one workflow, and review outputs before trusting the agent with customers.</desc>
 
-  <text x="600" y="80" text-anchor="middle" font-size="32" font-weight="600" fill="oklch(0.19 0.0055 75)">
+  <rect width="1200" height="675" fill="#FAF8F5" />
+
+  <text x="600" y="80" text-anchor="middle" font-family="'Geist', system-ui, sans-serif" font-size="32" font-weight="600" fill="#2A2825">
     Before you roll this out, do three things
   </text>
 
   <!-- Step 1 -->
-  <circle cx="220" cy="260" r="46" fill="oklch(0.42 0.09 255 / 8%)" stroke="oklch(0.42 0.09 255)" stroke-width="2.5" />
-  <text x="220" y="273" text-anchor="middle" font-size="34" font-weight="700" fill="oklch(0.42 0.09 255)">1</text>
-  <rect x="60" y="340" width="320" height="190" rx="16" fill="none" stroke="oklch(0.82 0.007 75)" stroke-width="2" />
-  <text x="220" y="390" text-anchor="middle" font-size="19" font-weight="600" fill="oklch(0.19 0.0055 75)">Ask what's actually</text>
-  <text x="220" y="414" text-anchor="middle" font-size="19" font-weight="600" fill="oklch(0.19 0.0055 75)">included</text>
-  <text x="220" y="448" text-anchor="middle" font-size="15" fill="oklch(0.36 0.009 75)">It's billed separately by</text>
-  <text x="220" y="468" text-anchor="middle" font-size="15" fill="oklch(0.36 0.009 75)">Salesforce and Anthropic —</text>
-  <text x="220" y="488" text-anchor="middle" font-size="15" fill="oklch(0.36 0.009 75)">not a flat add-on.</text>
+  <circle cx="220" cy="260" r="46" fill="#EEF0F8" stroke="#35407E" stroke-width="3" />
+  <text x="220" y="273" text-anchor="middle" font-family="'Geist', system-ui, sans-serif" font-size="34" font-weight="700" fill="#35407E">1</text>
+  <rect x="60" y="340" width="320" height="190" rx="16" fill="#FFFFFF" stroke="#D9D6D0" stroke-width="2" />
+  <text x="220" y="390" text-anchor="middle" font-family="'Geist', system-ui, sans-serif" font-size="19" font-weight="600" fill="#2A2825">Ask what's actually</text>
+  <text x="220" y="414" text-anchor="middle" font-family="'Geist', system-ui, sans-serif" font-size="19" font-weight="600" fill="#2A2825">included</text>
+  <text x="220" y="448" text-anchor="middle" font-family="'Geist', system-ui, sans-serif" font-size="15" fill="#6B6862">It's billed separately by</text>
+  <text x="220" y="468" text-anchor="middle" font-family="'Geist', system-ui, sans-serif" font-size="15" fill="#6B6862">Salesforce and Anthropic —</text>
+  <text x="220" y="488" text-anchor="middle" font-family="'Geist', system-ui, sans-serif" font-size="15" fill="#6B6862">not a flat add-on.</text>
 
   <!-- Step 2 -->
-  <circle cx="600" cy="260" r="46" fill="oklch(0.42 0.09 255 / 8%)" stroke="oklch(0.42 0.09 255)" stroke-width="2.5" />
-  <text x="600" y="273" text-anchor="middle" font-size="34" font-weight="700" fill="oklch(0.42 0.09 255)">2</text>
-  <rect x="440" y="340" width="320" height="190" rx="16" fill="none" stroke="oklch(0.82 0.007 75)" stroke-width="2" />
-  <text x="600" y="390" text-anchor="middle" font-size="19" font-weight="600" fill="oklch(0.19 0.0055 75)">Pilot one workflow</text>
-  <text x="600" y="424" text-anchor="middle" font-size="15" fill="oklch(0.36 0.009 75)">Not the whole sales process.</text>
-  <text x="600" y="444" text-anchor="middle" font-size="15" fill="oklch(0.36 0.009 75)">One workflow, one team,</text>
-  <text x="600" y="464" text-anchor="middle" font-size="15" fill="oklch(0.36 0.009 75)">a few weeks.</text>
+  <circle cx="600" cy="260" r="46" fill="#EEF0F8" stroke="#35407E" stroke-width="3" />
+  <text x="600" y="273" text-anchor="middle" font-family="'Geist', system-ui, sans-serif" font-size="34" font-weight="700" fill="#35407E">2</text>
+  <rect x="440" y="340" width="320" height="190" rx="16" fill="#FFFFFF" stroke="#D9D6D0" stroke-width="2" />
+  <text x="600" y="390" text-anchor="middle" font-family="'Geist', system-ui, sans-serif" font-size="19" font-weight="600" fill="#2A2825">Pilot one workflow</text>
+  <text x="600" y="424" text-anchor="middle" font-family="'Geist', system-ui, sans-serif" font-size="15" fill="#6B6862">Not the whole sales process.</text>
+  <text x="600" y="444" text-anchor="middle" font-family="'Geist', system-ui, sans-serif" font-size="15" fill="#6B6862">One workflow, one team,</text>
+  <text x="600" y="464" text-anchor="middle" font-family="'Geist', system-ui, sans-serif" font-size="15" fill="#6B6862">a few weeks.</text>
 
   <!-- Step 3 -->
-  <circle cx="980" cy="260" r="46" fill="oklch(0.42 0.09 255 / 8%)" stroke="oklch(0.42 0.09 255)" stroke-width="2.5" />
-  <text x="980" y="273" text-anchor="middle" font-size="34" font-weight="700" fill="oklch(0.42 0.09 255)">3</text>
-  <rect x="820" y="340" width="320" height="190" rx="16" fill="none" stroke="oklch(0.82 0.007 75)" stroke-width="2" />
-  <text x="980" y="390" text-anchor="middle" font-size="19" font-weight="600" fill="oklch(0.19 0.0055 75)">Review before it</text>
-  <text x="980" y="414" text-anchor="middle" font-size="19" font-weight="600" fill="oklch(0.19 0.0055 75)">touches customers</text>
-  <text x="980" y="448" text-anchor="middle" font-size="15" fill="oklch(0.36 0.009 75)">Someone checks its output</text>
-  <text x="980" y="468" text-anchor="middle" font-size="15" fill="oklch(0.36 0.009 75)">before it acts on its own.</text>
+  <circle cx="980" cy="260" r="46" fill="#EEF0F8" stroke="#35407E" stroke-width="3" />
+  <text x="980" y="273" text-anchor="middle" font-family="'Geist', system-ui, sans-serif" font-size="34" font-weight="700" fill="#35407E">3</text>
+  <rect x="820" y="340" width="320" height="190" rx="16" fill="#FFFFFF" stroke="#D9D6D0" stroke-width="2" />
+  <text x="980" y="390" text-anchor="middle" font-family="'Geist', system-ui, sans-serif" font-size="19" font-weight="600" fill="#2A2825">Review before it</text>
+  <text x="980" y="414" text-anchor="middle" font-family="'Geist', system-ui, sans-serif" font-size="19" font-weight="600" fill="#2A2825">touches customers</text>
+  <text x="980" y="448" text-anchor="middle" font-family="'Geist', system-ui, sans-serif" font-size="15" fill="#6B6862">Someone checks its output</text>
+  <text x="980" y="468" text-anchor="middle" font-family="'Geist', system-ui, sans-serif" font-size="15" fill="#6B6862">before it acts on its own.</text>
 
-  <line x1="266" y1="260" x2="554" y2="260" stroke="oklch(0.82 0.007 75)" stroke-width="2" stroke-dasharray="6 6" />
-  <line x1="646" y1="260" x2="934" y2="260" stroke="oklch(0.82 0.007 75)" stroke-width="2" stroke-dasharray="6 6" />
+  <line x1="266" y1="260" x2="554" y2="260" stroke="#D9D6D0" stroke-width="2" stroke-dasharray="6 6" />
+  <line x1="646" y1="260" x2="934" y2="260" stroke="#D9D6D0" stroke-width="2" stroke-dasharray="6 6" />
 </svg>

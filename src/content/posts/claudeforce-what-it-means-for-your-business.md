@@ -25,8 +25,6 @@ A few things are still genuinely unsettled. There's no confirmed answer yet on e
 
 ## Three things worth doing now
 
-![A three-step checklist: ask what's actually included, pilot one workflow, and review outputs before trusting the agent with customers.](/blog/claudeforce-business-checklist.svg)
-
 **Ask what's actually included in your agreement.** Don't assume you have it, and don't assume it's free — check with your account team or your consultant before planning around it.
 
 **Pilot it on one workflow, not your whole sales process.** Pick something small and measurable — meeting prep, or drafting first-touch follow-ups — and give it a few weeks with one team before deciding it's either magic or useless.
