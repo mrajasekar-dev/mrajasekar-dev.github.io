@@ -2,37 +2,27 @@ export const principles = [
   {
     number: "01",
     title: "Understand before building",
-    body: "Start with the business problem, not the Salesforce feature.",
+    body: "Start with the business problem, not the Salesforce feature — and resolve ambiguity before writing code.",
   },
   {
     number: "02",
-    title: "Resolve ambiguity early",
-    body: "Questions are cheaper before development starts.",
-  },
-  {
-    number: "03",
     title: "Design for the person using Salesforce",
     body: "Every screen, field, and workflow should reduce effort, not add to it.",
   },
   {
+    number: "03",
+    title: "Show progress, not slides",
+    body: "Working software is the update — not a status deck.",
+  },
+  {
     number: "04",
-    title: "Make working software visible",
-    body: "Progress should be demonstrated, not described in a PowerPoint.",
+    title: "No surprises",
+    body: "Problems get surfaced immediately. Trade-offs get explained, not hidden.",
   },
   {
     number: "05",
-    title: "Surface problems early",
-    body: "Bad news doesn't improve with time.",
-  },
-  {
-    number: "06",
-    title: "Don't knowingly create technical debt",
-    body: "If there's a trade-off, it gets explained — not hidden.",
-  },
-  {
-    number: "07",
-    title: "Leave the client stronger",
-    body: "Documentation, knowledge transfer, and ownership are part of delivery.",
+    title: "Leave you stronger",
+    body: "Documentation, knowledge transfer, and ownership ship with the work.",
   },
 ] as const;
 

@@ -5,7 +5,7 @@ import { SectionHeader } from "@/components/section-header";
 import { ServiceStage } from "@/components/service-card";
 import { Reveal } from "@/components/reveal";
 import { CTASection } from "@/components/cta-section";
-import { primaryService, secondaryService, futureService } from "@/content/services";
+import { primaryService, secondaryService } from "@/content/services";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -60,19 +60,6 @@ export default function ServicesPage() {
               </li>
             ))}
           </ul>
-        </Reveal>
-      </Section>
-
-      {/* Future: Complex Salesforce Engineering (small, non-dominant) */}
-      <Section spacing="sm">
-        <Reveal>
-          <p className="font-mono text-xs uppercase tracking-[0.14em] text-brand">
-            Looking ahead
-          </p>
-          <h2 className="mt-3 text-lg font-semibold">{futureService.name}</h2>
-          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-            {futureService.body}
-          </p>
         </Reveal>
       </Section>
 
