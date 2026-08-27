@@ -7,13 +7,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { submitContactForm, type ContactFormState } from "@/lib/actions";
 import { cn } from "@/lib/utils";
 
@@ -77,44 +70,15 @@ export function ContactForm() {
         <Field id="email" label="Work email" error={state.fieldErrors?.email}>
           <Input id="email" name="email" type="email" autoComplete="email" required />
         </Field>
-        <Field id="company" label="Company" error={state.fieldErrors?.company}>
-          <Input id="company" name="company" autoComplete="organization" required />
-        </Field>
-        <Field id="role" label="Role" error={state.fieldErrors?.role}>
-          <Input id="role" name="role" required />
-        </Field>
       </div>
 
-      <Field
-        id="goal"
-        label="What are you trying to accomplish?"
-        error={state.fieldErrors?.goal}
-      >
-        <Textarea id="goal" name="goal" rows={4} required />
+      <Field id="company" label="Company" error={state.fieldErrors?.company}>
+        <Input id="company" name="company" autoComplete="organization" required />
       </Field>
 
-      <div className="grid gap-5 sm:grid-cols-2">
-        <Field id="currentSituation" label="Current Salesforce situation (optional)">
-          <Textarea id="currentSituation" name="currentSituation" rows={2} />
-        </Field>
-        <div className="flex flex-col gap-5">
-          <Field id="projectSize" label="Approximate project size (optional)">
-            <Input id="projectSize" name="projectSize" placeholder="e.g. a few weeks, a quarter" />
-          </Field>
-          <Field id="preferredContact" label="Preferred contact method">
-            <Select name="preferredContact" defaultValue="either">
-              <SelectTrigger id="preferredContact" className="w-full">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="email">Email</SelectItem>
-                <SelectItem value="linkedin">LinkedIn</SelectItem>
-                <SelectItem value="either">Either</SelectItem>
-              </SelectContent>
-            </Select>
-          </Field>
-        </div>
-      </div>
+      <Field id="message" label="What are you trying to accomplish?" error={state.fieldErrors?.message}>
+        <Textarea id="message" name="message" rows={4} required />
+      </Field>
 
       {state.status === "error" ? (
         <p className={cn("text-sm text-destructive")}>{state.message}</p>

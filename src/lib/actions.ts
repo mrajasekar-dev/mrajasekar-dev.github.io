@@ -20,11 +20,7 @@ export async function submitContactForm(
     name: formData.get("name"),
     email: formData.get("email"),
     company: formData.get("company"),
-    role: formData.get("role"),
-    goal: formData.get("goal"),
-    currentSituation: formData.get("currentSituation") || undefined,
-    projectSize: formData.get("projectSize") || undefined,
-    preferredContact: formData.get("preferredContact") || "either",
+    message: formData.get("message"),
   };
 
   const parsed = contactFormSchema.safeParse(raw);
