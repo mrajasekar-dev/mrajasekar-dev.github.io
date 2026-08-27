@@ -81,9 +81,9 @@ export default function HomePage() {
 
       {/* How I Work teaser */}
       <Section>
-        <SectionHeader eyebrow="How I work" title="Seven principles that shape every engagement." />
+        <SectionHeader eyebrow="How I work" title="Five principles that shape every engagement." />
         <div className="mt-8 grid gap-x-10 gap-y-2 sm:grid-cols-2">
-          {principles.slice(0, 4).map((p) => (
+          {principles.slice(0, 3).map((p) => (
             <Reveal key={p.number} className="flex items-baseline gap-3 py-1.5">
               <span className="font-mono text-xs text-brand">{p.number}</span>
               <span className="text-sm font-medium">{p.title}</span>
@@ -95,7 +95,7 @@ export default function HomePage() {
             href="/how-i-work"
             className="inline-flex items-center gap-1.5 text-sm font-medium text-brand hover:underline underline-offset-4"
           >
-            Read all seven principles <ArrowRight className="size-4" />
+            Read all five principles <ArrowRight className="size-4" />
           </Link>
         </div>
       </Section>

@@ -10,7 +10,7 @@ import { principles, engineeringNote } from "@/content/methodology";
 export const metadata: Metadata = {
   title: "How I Work",
   description:
-    "Seven principles that shape every Salesforce engagement — from understanding the problem before building, to leaving the client stronger than before.",
+    "Five principles that shape every Salesforce engagement — from understanding the problem before building, to leaving you stronger than before.",
   alternates: { canonical: "/how-i-work" },
 };
 
@@ -21,7 +21,7 @@ export default function HowIWorkPage() {
         <SectionHeader
           as="h1"
           eyebrow="How I work"
-          title="Seven principles, not a sales pitch."
+          title="Five principles, not a sales pitch."
           body="These aren't marketing language. They're the operating rules I hold myself to on every engagement."
         />
       </Section>
