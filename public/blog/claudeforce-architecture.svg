@@ -1,0 +1,57 @@
+<svg viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">How a Claudeforce request flows through Agentforce</title>
+  <desc id="desc">User request goes to the Atlas Reasoning Engine (now Claude, via Amazon Bedrock, inside the Trust Boundary), which requests data through an MCP server that enforces sharing rules and field-level security, which in turn calls Salesforce actions like Flow, Apex, and Data Cloud.</desc>
+
+  <rect width="1200" height="675" fill="#FAF8F5" />
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2A2825" />
+    </marker>
+  </defs>
+
+  <text x="600" y="70" text-anchor="middle" font-family="'Geist', system-ui, sans-serif" font-size="32" font-weight="600" fill="#2A2825">
+    Where a Claudeforce request actually goes
+  </text>
+
+  <!-- Box 1: User -->
+  <rect x="40" y="230" width="220" height="190" rx="16" fill="#FFFFFF" stroke="#D9D6D0" stroke-width="2" />
+  <text x="150" y="315" text-anchor="middle" font-family="'Geist', system-ui, sans-serif" font-size="20" font-weight="600" fill="#2A2825">User / Seller</text>
+  <text x="150" y="343" text-anchor="middle" font-family="'Geist', system-ui, sans-serif" font-size="15" fill="#6B6862">asks a question or</text>
+  <text x="150" y="363" text-anchor="middle" font-family="'Geist', system-ui, sans-serif" font-size="15" fill="#6B6862">gives an instruction</text>
+
+  <!-- Arrow 1 -->
+  <line x1="264" y1="325" x2="316" y2="325" stroke="#2A2825" stroke-width="2" marker-end="url(#arrow)" />
+  <text x="290" y="300" text-anchor="middle" font-family="'Geist', system-ui, sans-serif" font-size="13" fill="#6B6862">plans next step</text>
+
+  <!-- Box 2: Atlas Reasoning Engine (highlighted) -->
+  <rect x="320" y="210" width="260" height="230" rx="16" fill="#EEF0F8" stroke="#35407E" stroke-width="3" />
+  <text x="450" y="290" text-anchor="middle" font-family="'Geist', system-ui, sans-serif" font-size="20" font-weight="600" fill="#35407E">Atlas Reasoning</text>
+  <text x="450" y="314" text-anchor="middle" font-family="'Geist', system-ui, sans-serif" font-size="20" font-weight="600" fill="#35407E">Engine</text>
+  <text x="450" y="344" text-anchor="middle" font-family="'Geist', system-ui, sans-serif" font-size="15" fill="#4A4744">Claude, via Amazon Bedrock —</text>
+  <text x="450" y="364" text-anchor="middle" font-family="'Geist', system-ui, sans-serif" font-size="15" fill="#4A4744">inside the Trust Boundary</text>
+
+  <!-- Arrow 2 -->
+  <line x1="584" y1="325" x2="636" y2="325" stroke="#2A2825" stroke-width="2" marker-end="url(#arrow)" />
+  <text x="610" y="300" text-anchor="middle" font-family="'Geist', system-ui, sans-serif" font-size="13" fill="#6B6862">requests data</text>
+
+  <!-- Box 3: MCP Server -->
+  <rect x="640" y="230" width="240" height="190" rx="16" fill="#FFFFFF" stroke="#D9D6D0" stroke-width="2" />
+  <text x="760" y="315" text-anchor="middle" font-family="'Geist', system-ui, sans-serif" font-size="20" font-weight="600" fill="#2A2825">MCP Server</text>
+  <text x="760" y="343" text-anchor="middle" font-family="'Geist', system-ui, sans-serif" font-size="15" fill="#6B6862">checks sharing rules &amp;</text>
+  <text x="760" y="363" text-anchor="middle" font-family="'Geist', system-ui, sans-serif" font-size="15" fill="#6B6862">field-level security</text>
+
+  <!-- Arrow 3 -->
+  <line x1="884" y1="325" x2="936" y2="325" stroke="#2A2825" stroke-width="2" marker-end="url(#arrow)" />
+  <text x="910" y="300" text-anchor="middle" font-family="'Geist', system-ui, sans-serif" font-size="13" fill="#6B6862">executes &amp; returns</text>
+
+  <!-- Box 4: Salesforce actions -->
+  <rect x="940" y="230" width="220" height="190" rx="16" fill="#FFFFFF" stroke="#D9D6D0" stroke-width="2" />
+  <text x="1050" y="315" text-anchor="middle" font-family="'Geist', system-ui, sans-serif" font-size="20" font-weight="600" fill="#2A2825">Salesforce</text>
+  <text x="1050" y="339" text-anchor="middle" font-family="'Geist', system-ui, sans-serif" font-size="15" fill="#6B6862">Flow · Apex ·</text>
+  <text x="1050" y="359" text-anchor="middle" font-family="'Geist', system-ui, sans-serif" font-size="15" fill="#6B6862">Data Cloud</text>
+
+  <text x="600" y="500" text-anchor="middle" font-family="'Geist', system-ui, sans-serif" font-size="17" fill="#4A4744">
+    Permission checks happen at the MCP layer — before Claude ever sees the record.
+  </text>
+</svg>

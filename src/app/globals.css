@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -135,4 +136,53 @@
   html {
     @apply font-sans;
   }
+}
+
+/* Minimal, theme-aware syntax highlighting for rehype-highlight output —
+   uses the existing design tokens instead of a stock highlight.js theme
+   so code blocks stay in sync with light/dark mode automatically. */
+.hljs {
+  color: var(--foreground);
+}
+.hljs-comment,
+.hljs-quote {
+  color: var(--muted-foreground);
+  font-style: italic;
+}
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-tag,
+.hljs-name {
+  color: var(--brand);
+}
+.hljs-string,
+.hljs-attr,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+  color: oklch(0.5 0.12 150);
+}
+.hljs-number,
+.hljs-literal {
+  color: oklch(0.55 0.15 40);
+}
+.hljs-title,
+.hljs-function,
+.hljs-title.function_ {
+  color: var(--foreground);
+  font-weight: 600;
+}
+.hljs-built_in,
+.hljs-type,
+.hljs-params {
+  color: oklch(0.5 0.1 255);
+}
+.hljs-deletion {
+  color: var(--destructive);
+}
+.hljs-emphasis {
+  font-style: italic;
+}
+.hljs-strong {
+  font-weight: 700;
 }
