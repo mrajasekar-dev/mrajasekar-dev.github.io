@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Building2, Code2 } from "lucide-react";
 
 import { Section } from "@/components/section";
 import { SectionHeader } from "@/components/section-header";
@@ -16,7 +17,9 @@ export const metadata: Metadata = {
 
 function EmptyState() {
   return (
-    <p className="text-sm text-muted-foreground">Nothing published here yet — check back soon.</p>
+    <p className="py-8 text-sm text-muted-foreground">
+      Nothing published here yet — check back soon.
+    </p>
   );
 }
 
@@ -26,7 +29,7 @@ export default function BlogPage() {
 
   return (
     <>
-      <Section as="div" spacing="top" border={false}>
+      <Section as="div" spacing="top" border={false} className="pb-6">
         <SectionHeader
           as="h1"
           eyebrow="Blog"
@@ -35,32 +38,28 @@ export default function BlogPage() {
         />
       </Section>
 
-      <Section spacing="top" border={false}>
+      <Section spacing="lg" border={false} className="pt-0">
         <Tabs defaultValue="technical">
-          <TabsList>
-            <TabsTrigger value="technical">Technical</TabsTrigger>
-            <TabsTrigger value="business">For Clients</TabsTrigger>
+          <TabsList variant="underline">
+            <TabsTrigger value="technical">
+              <Code2 className="size-4" /> Technical
+            </TabsTrigger>
+            <TabsTrigger value="business">
+              <Building2 className="size-4" /> For Clients
+            </TabsTrigger>
           </TabsList>
 
-          <TabsContent value="technical" className="mt-8">
+          <TabsContent value="technical" className="divide-y divide-border/70">
             {technical.length ? (
-              <div className="grid gap-x-8 gap-y-10 sm:grid-cols-2">
-                {technical.map((post) => (
-                  <BlogCard key={post.slug} post={post} />
-                ))}
-              </div>
+              technical.map((post) => <BlogCard key={post.slug} post={post} />)
             ) : (
               <EmptyState />
             )}
           </TabsContent>
 
-          <TabsContent value="business" className="mt-8">
+          <TabsContent value="business" className="divide-y divide-border/70">
             {business.length ? (
-              <div className="grid gap-x-8 gap-y-10 sm:grid-cols-2">
-                {business.map((post) => (
-                  <BlogCard key={post.slug} post={post} />
-                ))}
-              </div>
+              business.map((post) => <BlogCard key={post.slug} post={post} />)
             ) : (
               <EmptyState />
             )}
