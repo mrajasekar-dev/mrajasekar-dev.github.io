@@ -5,6 +5,7 @@ import { SectionHeader } from "@/components/section-header";
 import { ContactForm } from "@/components/contact-form";
 import { Scheduler } from "@/components/scheduler";
 import { LinkedinIcon } from "@/components/icons";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -38,25 +39,34 @@ export default function ContactPage() {
         </a>
       </div>
 
-      <div className="mt-8 border-t border-border/70 pt-8">
-        <h2 className="text-lg font-semibold">Book a call directly</h2>
-        <p className="mt-1 text-sm text-muted-foreground">
-          Pick a time that works for you — you&rsquo;ll get a calendar invite with a Google
-          Meet link right away.
-        </p>
-        <div className="mt-5">
-          <Scheduler />
-        </div>
-      </div>
-
       <div className="mt-10 border-t border-border/70 pt-8">
-        <h2 className="text-lg font-semibold">Or send a message instead</h2>
-        <p className="mt-1 text-sm text-muted-foreground">
-          Prefer to write out the details first? This works too.
-        </p>
-        <div className="mt-5">
-          <ContactForm />
-        </div>
+        <Tabs defaultValue="call">
+          <TabsList>
+            <TabsTrigger value="call">Book a call</TabsTrigger>
+            <TabsTrigger value="message">Send a message</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="call" className="mt-6">
+            <h2 className="text-lg font-semibold">Book a call directly</h2>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Pick a time that works for you — you&rsquo;ll get a calendar invite with a
+              Google Meet link right away.
+            </p>
+            <div className="mt-5">
+              <Scheduler />
+            </div>
+          </TabsContent>
+
+          <TabsContent value="message" className="mt-6">
+            <h2 className="text-lg font-semibold">Send a message</h2>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Prefer to write out the details first? This works too.
+            </p>
+            <div className="mt-5">
+              <ContactForm />
+            </div>
+          </TabsContent>
+        </Tabs>
       </div>
     </Section>
   );
