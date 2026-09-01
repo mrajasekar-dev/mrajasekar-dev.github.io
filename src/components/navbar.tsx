@@ -14,6 +14,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
@@ -48,47 +49,50 @@ export function Navbar() {
           })}
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden items-center gap-2 md:flex">
+          <ThemeToggle />
           <Button asChild size="lg" className="h-10 px-4">
             <Link href={primaryCta.href}>{primaryCta.label}</Link>
           </Button>
         </div>
 
-        <Sheet open={open} onOpenChange={setOpen}>
-          <Button
-            variant="ghost"
-            size="icon-lg"
-            className="md:hidden"
-            onClick={() => setOpen(true)}
-            aria-label="Open menu"
-          >
-            <Menu />
-          </Button>
-          <SheetContent side="right" className="w-full sm:max-w-xs">
-            <SheetHeader>
-              <SheetTitle>{siteConfig.name}</SheetTitle>
-            </SheetHeader>
-            <nav className="flex flex-col gap-1 px-4">
-              {nav.map((item) => (
-                <SheetClose asChild key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="rounded-md px-2 py-3 text-base text-foreground hover:bg-muted"
-                  >
-                    {item.label}
-                  </Link>
+        <div className="flex items-center gap-1 md:hidden">
+          <ThemeToggle />
+          <Sheet open={open} onOpenChange={setOpen}>
+            <Button
+              variant="ghost"
+              size="icon-lg"
+              onClick={() => setOpen(true)}
+              aria-label="Open menu"
+            >
+              <Menu />
+            </Button>
+            <SheetContent side="right" className="w-full sm:max-w-xs">
+              <SheetHeader>
+                <SheetTitle>{siteConfig.name}</SheetTitle>
+              </SheetHeader>
+              <nav className="flex flex-col gap-1 px-4">
+                {nav.map((item) => (
+                  <SheetClose asChild key={item.href}>
+                    <Link
+                      href={item.href}
+                      className="rounded-md px-2 py-3 text-base text-foreground hover:bg-muted"
+                    >
+                      {item.label}
+                    </Link>
+                  </SheetClose>
+                ))}
+              </nav>
+              <div className="mt-auto p-4">
+                <SheetClose asChild>
+                  <Button asChild size="lg" className="h-11 w-full">
+                    <Link href={primaryCta.href}>{primaryCta.label}</Link>
+                  </Button>
                 </SheetClose>
-              ))}
-            </nav>
-            <div className="mt-auto p-4">
-              <SheetClose asChild>
-                <Button asChild size="lg" className="h-11 w-full">
-                  <Link href={primaryCta.href}>{primaryCta.label}</Link>
-                </Button>
-              </SheetClose>
-            </div>
-          </SheetContent>
-        </Sheet>
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </header>
   );
