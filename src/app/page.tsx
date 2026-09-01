@@ -11,6 +11,7 @@ import { UxComparison } from "@/components/ux-comparison";
 import { problems, whatIDo, uxPhilosophyTeaser } from "@/content/home";
 import { principles } from "@/content/methodology";
 import { siteConfig } from "@/config/site";
+import { getSiteSettings } from "@/lib/site-settings";
 
 export const metadata: Metadata = {
   title: `${siteConfig.name} — ${siteConfig.title}`,
@@ -18,10 +19,12 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-export default function HomePage() {
+export default async function HomePage() {
+  const settings = await getSiteSettings();
+
   return (
     <>
-      <Hero />
+      <Hero tagline={settings.hero.tagline} ctaLabel={settings.hero.ctaLabel} />
 
       {/* The problems I see */}
       <Section>

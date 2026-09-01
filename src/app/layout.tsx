@@ -9,6 +9,7 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Toaster } from "@/components/ui/sonner";
 import { siteConfig } from "@/config/site";
+import { getSiteSettings } from "@/lib/site-settings";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -80,13 +81,29 @@ const jsonLd = [
   },
 ];
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default async function RootLayout({ children }: LayoutProps<"/">) {
+  const settings = await getSiteSettings();
+  const colorOverrides = `
+    :root {
+      --background: ${settings.colors.light.background};
+      --foreground: ${settings.colors.light.foreground};
+      --brand: ${settings.colors.light.brand};
+    }
+    .dark {
+      --background: ${settings.colors.dark.background};
+      --foreground: ${settings.colors.dark.foreground};
+      --brand: ${settings.colors.dark.brand};
+    }
+  `;
+
   return (
     <html
       lang="en"
       className={`${GeistSans.variable} ${GeistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        {/* Overrides the static tokens in globals.css with values saved in /admin/appearance. */}
+        <style dangerouslySetInnerHTML={{ __html: colorOverrides }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

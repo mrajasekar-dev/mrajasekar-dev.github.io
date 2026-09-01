@@ -20,9 +20,9 @@ function EmptyState() {
   );
 }
 
-export default function BlogPage() {
-  const technical = getPostsByChannel("technical");
-  const business = getPostsByChannel("business");
+export default async function BlogPage() {
+  const technical = await getPostsByChannel("technical");
+  const business = await getPostsByChannel("business");
 
   return (
     <>

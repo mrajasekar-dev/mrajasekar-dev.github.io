@@ -8,8 +8,9 @@ import { CTASection } from "@/components/cta-section";
 import { channelLabels, getAllSlugs, getPostBySlug } from "@/lib/blog";
 import { siteConfig } from "@/config/site";
 
-export function generateStaticParams() {
-  return getAllSlugs().map((slug) => ({ slug }));
+export async function generateStaticParams() {
+  const slugs = await getAllSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
