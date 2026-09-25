@@ -1,41 +1,43 @@
 import type { Metadata } from "next";
 
-import { Section } from "@/components/section";
-import { SectionHeader } from "@/components/section-header";
+import { PageHero } from "@/components/brief/page-hero";
+import { Container } from "@/components/brief/container";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Privacy",
-  description: "How contact form information is handled.",
+  description: "What this site collects, why, and how to have it removed.",
   alternates: { canonical: "/privacy" },
   robots: { index: false, follow: true },
 };
 
 export default function PrivacyPage() {
   return (
-    <Section as="div" spacing="top" border={false} className="max-w-2xl pb-14 sm:pb-16">
-      <SectionHeader as="h1" eyebrow="Legal" title="Privacy" />
-      <div className="mt-6 flex flex-col gap-4 text-sm leading-relaxed text-muted-foreground">
-        <p>
-          This site collects only what you submit through the contact form: your
-          name, work email, company, role, and the details you choose to share
-          about your project. That information is used solely to respond to you.
-        </p>
-        <p>
-          No analytics on this site tie page views to your identity. Aggregate,
-          anonymous traffic and performance metrics (page views, referrers, Core
-          Web Vitals) are collected via Vercel Analytics and Speed Insights to
-          understand how the site is used and to keep it fast.
-        </p>
-        <p>
-          Your contact details are never sold or shared with third parties. If
-          you&rsquo;d like anything you&rsquo;ve submitted removed, email{" "}
-          <a href={`mailto:${siteConfig.email}`} className="text-brand hover:underline underline-offset-4">
-            {siteConfig.email}
-          </a>{" "}
-          and it will be handled directly.
-        </p>
-      </div>
-    </Section>
+    <>
+      <PageHero label="Legal" title="Privacy" intro="Short version: I collect only what you send me, use it only to reply, and delete it on request." />
+      <Container className="max-w-3xl pb-16">
+        <div className="flex flex-col gap-5 leading-relaxed text-foreground/85">
+          <p>
+            <strong>What&rsquo;s collected.</strong> When you send a message or book a call, I receive your name, work
+            email, company, and whatever you choose to write. Bookings also create a Google Calendar event with a Meet
+            link. Submissions are stored privately on Vercel so I can reply and keep track of the conversation.
+          </p>
+          <p>
+            <strong>Analytics.</strong> Aggregate, anonymous traffic and performance metrics (page views, referrers,
+            Core Web Vitals) are collected with Vercel Analytics and Speed Insights. They are not tied to your identity.
+          </p>
+          <p>
+            <strong>Sharing.</strong> Your details are never sold or shared with third parties for marketing.
+          </p>
+          <p>
+            <strong>Removal.</strong> Email{" "}
+            <a href={`mailto:${siteConfig.email}`} className="text-brand underline underline-offset-4">
+              {siteConfig.email}
+            </a>{" "}
+            and anything you&rsquo;ve submitted will be deleted.
+          </p>
+        </div>
+      </Container>
+    </>
   );
 }

@@ -18,6 +18,8 @@ import {
 } from "@/lib/auth";
 import { saveSiteSettings } from "@/lib/site-settings";
 import { savePostRecord, deletePostRecord } from "@/lib/blog-store";
+import { getSiteSettings } from "@/lib/site-settings";
+import { deleteInquiry, updateInquiryStatus, type InquiryStatus } from "@/lib/inbox-store";
 
 export type LoginState = { status: "idle" | "error"; message?: string };
 
@@ -82,6 +84,10 @@ export async function saveSettingsAction(
       tagline: formData.get("tagline"),
       ctaLabel: formData.get("ctaLabel"),
     },
+    availability: {
+      status: formData.get("availability-status"),
+      note: formData.get("availability-note") ?? "",
+    },
   };
 
   const parsed = siteSettingsSchema.safeParse(raw);
@@ -92,7 +98,36 @@ export async function saveSettingsAction(
   await saveSiteSettings(parsed.data);
   revalidatePath("/", "layout");
 
-  return { status: "success", message: "Saved — changes are live." };
+  return { status: "success", message: "Saved. Changes are live." };
+}
+
+/** One-click availability switch from the Overview. */
+export async function setAvailabilityAction(formData: FormData): Promise<void> {
+  await requireAdminSession();
+  const status = String(formData.get("status"));
+  if (status !== "open" && status !== "limited" && status !== "booked") return;
+  const current = await getSiteSettings();
+  await saveSiteSettings({ ...current, availability: { ...current.availability, status } });
+  revalidatePath("/", "layout");
+}
+
+const INQUIRY_STATUSES: InquiryStatus[] = ["new", "replied", "won", "archived"];
+
+export async function setInquiryStatusAction(formData: FormData): Promise<void> {
+  await requireAdminSession();
+  const id = String(formData.get("id") ?? "");
+  const status = String(formData.get("status")) as InquiryStatus;
+  if (!id || !INQUIRY_STATUSES.includes(status)) return;
+  await updateInquiryStatus(id, status);
+  revalidatePath("/admin", "layout");
+}
+
+export async function deleteInquiryAction(formData: FormData): Promise<void> {
+  await requireAdminSession();
+  const id = String(formData.get("id") ?? "");
+  if (!id) return;
+  await deleteInquiry(id);
+  revalidatePath("/admin", "layout");
 }
 
 export type PostFormState = { status: "idle" | "error"; message?: string };
@@ -133,6 +168,9 @@ export async function savePostAction(
   revalidatePath("/sitemap.xml");
   revalidatePath("/");
 
+  if (formData.get("stay") === "1") {
+    redirect(`/admin/posts/${parsed.data.slug}/edit?saved=1`);
+  }
   redirect("/admin/posts");
 }
 

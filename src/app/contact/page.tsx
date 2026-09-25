@@ -1,73 +1,72 @@
 import type { Metadata } from "next";
+import { Mail } from "lucide-react";
 
-import { Section } from "@/components/section";
-import { SectionHeader } from "@/components/section-header";
+import { PageHero } from "@/components/brief/page-hero";
+import { Container } from "@/components/brief/container";
 import { ContactForm } from "@/components/contact-form";
 import { Scheduler } from "@/components/scheduler";
 import { LinkedinIcon } from "@/components/icons";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { siteConfig } from "@/config/site";
+import { topicLabel, topics } from "@/content/topics";
+import { availabilityLabels, getSiteSettings } from "@/lib/site-settings";
+import { isCalendarConfigured } from "@/lib/google-calendar";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: `Start a conversation with ${siteConfig.name} about a Salesforce implementation, an existing org, or engineering support.`,
+  description: `Get in touch with .`,
   alternates: { canonical: "/contact" },
 };
 
-export default function ContactPage() {
+export default async function ContactPage({ searchParams }: PageProps<"/contact">) {
+  const { topic } = await searchParams;
+  const topicId = typeof topic === "string" && topicLabel(topic) ? topic : undefined;
+  const { availability } = await getSiteSettings();
+  const calendarReady = isCalendarConfigured();
+
   return (
-    <Section as="div" spacing="top" border={false} className="max-w-3xl pb-14 sm:pb-16">
-      <SectionHeader
-        as="h1"
-        eyebrow="Contact"
-        title="Have a Salesforce problem worth talking through?"
-        body="If you're implementing Salesforce, struggling with an existing org, or simply trying to work out what the right solution looks like, let's talk. You don't need to have the requirements figured out before reaching out."
-      />
+    <>
+      <PageHero label="Contact" title="Contact" intro={<>Email me at <a href={`mailto:${siteConfig.email}`} className="text-foreground underline underline-offset-4 hover:text-brand">{siteConfig.email}</a>, or use the form below.</>} />
 
-      <div className="mt-6 flex flex-col gap-3 text-sm text-muted-foreground sm:flex-row sm:items-center sm:gap-6">
-        <a href={`mailto:${siteConfig.email}`} className="text-brand hover:underline underline-offset-4">
-          {siteConfig.email}
-        </a>
-        <a
-          href={siteConfig.linkedin}
-          target="_blank"
-          rel="noreferrer noopener"
-          className="inline-flex items-center gap-1.5 text-brand hover:underline underline-offset-4"
-        >
-          <LinkedinIcon className="size-4" />
-          Connect on LinkedIn
-        </a>
-      </div>
-
-      <div className="mt-10 border-t border-border/70 pt-8">
-        <Tabs defaultValue="call">
-          <TabsList>
-            <TabsTrigger value="call">Book a call</TabsTrigger>
-            <TabsTrigger value="message">Send a message</TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="call" className="mt-6">
-            <h2 className="text-lg font-semibold">Book a call directly</h2>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Pick a time that works for you — you&rsquo;ll get a calendar invite with a
-              Google Meet link right away.
+      <section>
+        <Container className="grid gap-12 pb-16 lg:grid-cols-12">
+          <aside className="flex flex-col gap-4 text-sm lg:col-span-4">
+            <p className="flex items-center gap-2 font-medium">
+              <span className={cn("size-2 rounded-full", availability.status === "open" ? "bg-ok" : availability.status === "limited" ? "bg-amber-500" : "bg-muted-foreground")} />
+              {availabilityLabels[availability.status]}
             </p>
-            <div className="mt-5">
-              <Scheduler />
+            {availability.note ? <p className="text-muted-foreground">{availability.note}</p> : null}
+            <div className="flex flex-col gap-2 border-t border-rule pt-4">
+              <a href={`mailto:${siteConfig.email}`} className="inline-flex items-center gap-2 hover:text-brand">
+                <Mail className="size-4" aria-hidden /> {siteConfig.email}
+              </a>
+              <a href={siteConfig.linkedin} target="_blank" rel="noreferrer noopener" className="inline-flex items-center gap-2 hover:text-brand">
+                <LinkedinIcon className="size-4" /> LinkedIn
+              </a>
             </div>
-          </TabsContent>
+          </aside>
 
-          <TabsContent value="message" className="mt-6">
-            <h2 className="text-lg font-semibold">Send a message</h2>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Prefer to write out the details first? This works too.
-            </p>
-            <div className="mt-5">
-              <ContactForm />
+          <div className="lg:col-span-8">
+            <div className="rounded-2xl border border-rule">
+              <Tabs defaultValue={calendarReady ? "call" : "message"}>
+                <div className="border-b border-rule px-5 pt-5 sm:px-8">
+                  <TabsList className="mb-5">
+                    <TabsTrigger value="call">Book a call</TabsTrigger>
+                    <TabsTrigger value="message">Send a message</TabsTrigger>
+                  </TabsList>
+                </div>
+                <TabsContent value="call" className="p-5 sm:p-8">
+                  <Scheduler topics={topics} defaultTopic={topicId} />
+                </TabsContent>
+                <TabsContent value="message" className="p-5 sm:p-8">
+                  <ContactForm topics={topics} defaultTopic={topicId} />
+                </TabsContent>
+              </Tabs>
             </div>
-          </TabsContent>
-        </Tabs>
-      </div>
-    </Section>
+          </div>
+        </Container>
+      </section>
+    </>
   );
 }

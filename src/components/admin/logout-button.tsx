@@ -2,21 +2,23 @@
 
 import { useTransition } from "react";
 
-import { Button } from "@/components/ui/button";
+import { LogOut } from "lucide-react";
+
+import { studioButton } from "@/components/studio/ui";
 import { logoutAction } from "@/lib/admin-actions";
 
 export function LogoutButton() {
   const [pending, startTransition] = useTransition();
 
   return (
-    <Button
+    <button
       type="button"
-      variant="outline"
-      size="sm"
+      className={studioButton.ghost}
       disabled={pending}
       onClick={() => startTransition(() => logoutAction())}
     >
+      <LogOut className="size-4" aria-hidden />
       {pending ? "Logging out…" : "Log out"}
-    </Button>
+    </button>
   );
 }

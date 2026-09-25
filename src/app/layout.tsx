@@ -12,10 +12,12 @@ import { Toaster } from "@/components/ui/sonner";
 import { siteConfig } from "@/config/site";
 import { getSiteSettings } from "@/lib/site-settings";
 
+const fullTitle = `${siteConfig.name} — ${siteConfig.title}`;
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} — ${siteConfig.title}`,
+    default: fullTitle,
     template: `%s — ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -27,12 +29,12 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: `${siteConfig.name} — ${siteConfig.title}`,
+    title: fullTitle,
     description: siteConfig.description,
   },
   twitter: {
-    card: "summary",
-    title: `${siteConfig.name} — ${siteConfig.title}`,
+    card: "summary_large_image",
+    title: fullTitle,
     description: siteConfig.description,
     creator: siteConfig.twitterHandle,
   },
@@ -43,7 +45,10 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f8f6f3",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0b0b0c" },
+  ],
 };
 
 const jsonLd = [
@@ -55,24 +60,22 @@ const jsonLd = [
     url: siteConfig.url,
     email: siteConfig.email,
     sameAs: [siteConfig.linkedin, siteConfig.github, siteConfig.twitter],
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Bengaluru",
-      addressCountry: "IN",
-    },
+    alumniOf: [
+      { "@type": "CollegeOrUniversity", name: "Liverpool Business School" },
+      { "@type": "CollegeOrUniversity", name: "Amrita Vishwa Vidyapeetham" },
+    ],
+    knowsAbout: ["Salesforce", "Apex", "Lightning Web Components", "Health Cloud", "Agentforce", "Salesforce integrations"],
+    address: { "@type": "PostalAddress", addressLocality: "Bengaluru", addressCountry: "IN" },
   },
   {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    name: `${siteConfig.name} — ${siteConfig.title}`,
+    name: fullTitle,
     description: siteConfig.description,
     url: siteConfig.url,
     email: siteConfig.email,
     areaServed: "Worldwide",
-    founder: {
-      "@type": "Person",
-      name: siteConfig.name,
-    },
+    founder: { "@type": "Person", name: siteConfig.name },
   },
   {
     "@context": "https://schema.org",
@@ -103,16 +106,15 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
       suppressHydrationWarning
       className={`${GeistSans.variable} ${GeistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
-        {/* Overrides the static tokens in globals.css with values saved in /admin/appearance. */}
+      <body className="flex min-h-full flex-col">
+        {/* Overrides the static tokens in globals.css with values saved in /admin/site. */}
         <style dangerouslySetInnerHTML={{ __html: colorOverrides }} />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <Navbar />
-          <main className="flex-1">{children}</main>
+          <main id="main" className="flex-1">
+            {children}
+          </main>
           <Footer />
           <Toaster position="bottom-right" />
         </ThemeProvider>

@@ -1,5 +1,7 @@
+// Sourced from the founder's CV (Sept 2026). Keep it factual and short.
+
 export const intro = {
-  body: "I'm Rajasekar (most people just call me Raj), a Salesforce developer and technical consultant who has spent the last several years building Salesforce solutions across complex business environments — healthcare, automotive, and medical devices.",
+  body: "I'm Rajasekar (most people call me Raj), a Senior Salesforce Developer with 5+ years of solution design and delivery in integration-heavy enterprise environments.",
 } as const;
 
 type ExperiencePhoto = { src: string; alt: string; width: number; height: number };
@@ -9,6 +11,7 @@ type ExperienceEntry = {
   org: string;
   period: string;
   location: string;
+  summary: string;
   photo?: ExperiencePhoto;
   bullets: string[];
 };
@@ -19,12 +22,11 @@ export const experience: ExperienceEntry[] = [
     org: "GoKarya",
     period: "Feb 2026 – Present",
     location: "Bengaluru, India",
+    summary: "Boutique Salesforce consultancy, working directly with US enterprise clients.",
     bullets: [
-      "Architected a clinical trial management platform on Health Cloud for a US medical device company, integrating internal LWC interfaces and external Next.js/React dashboards via Salesforce External Client App Credentials.",
-      "Pioneered AI-first development using Agentforce, Claude Code, MCP servers, and agentic frameworks, reducing multi-week feature development cycles to single-day deployments.",
-      "Engineered multi-agent orchestration with deterministic guardrails governing Salesforce read/write permissions, CI/CD pipelines, and token-optimized prompt routing, utilizing data grounding and RAG for responsible AI outputs.",
-      "Delivered enterprise identity and calendar federation, resolving native Salesforce Activity object limitations through custom Screen Flows, Microsoft Graph API, and Azure AD SAML SSO.",
-      "Mentored junior engineers through technical design reviews focused on scalable architecture and test-driven development.",
+      "Built a clinical trial management platform for a US medical device company, reused across three systems.",
+      "Technical advisor on the steering committee for Becknell Industrial: discovery, architecture and go-live.",
+      "Designed a real-time analytics dashboard using Lightning Message Service, with scheduled executive digests.",
     ],
   },
   {
@@ -32,6 +34,7 @@ export const experience: ExperienceEntry[] = [
     org: "Salesforce",
     period: "Jun 2021 – Feb 2026",
     location: "Bengaluru, India",
+    summary: "Delivery for enterprise customers across automotive, healthcare and non-profit.",
     photo: {
       src: "/rajasekar-salesforce.jpg",
       alt: "Rajasekar M standing at the Salesforce Bengaluru office",
@@ -39,10 +42,10 @@ export const experience: ExperienceEntry[] = [
       height: 1800,
     },
     bullets: [
-      "Engineered high-volume, HIPAA-aligned data architectures handling millions of records for enterprise Health Cloud and Nonprofit Cloud clients, using asynchronous Apex, Platform Events, and the Trigger Actions Framework.",
-      "Designed bulkified flows and external processing pipelines optimized for governor limits and high-traffic performance across Sales Cloud, Service Cloud, and Health Cloud deployments.",
-      "Built real-time SAP–Salesforce integrations via custom REST APIs, powering an event-driven Sales Cloud and Service Cloud dealer management system for an Indian EV OEM.",
-      "Refactored legacy codebases and eliminated technical debt, driving Apex test coverage from 50% to 85%, and executed complex data migrations for a US Nonprofit Cloud CRM.",
+      "Event-driven order notifications (SMS, WhatsApp, push) on Platform Events for an Indian EV startup.",
+      "Two-way SAP–Salesforce sync through a custom Apex REST layer.",
+      "Health Cloud data architecture for clients including Blue Shield California and AARP.",
+      "Raised Apex test coverage from 50% to 85% on a legacy non-profit codebase.",
     ],
   },
 ];
@@ -56,50 +59,28 @@ export const award = {
 
 export const independentProject = {
   name: "Orglore",
-  description: "Full-stack SOQL productivity SaaS",
+  description: "Full-stack SOQL SaaS",
   bullets: [
-    "Engineered a full-stack SOQL productivity application from zero to a functional MVP using Next.js, Supabase, and Vercel.",
-    "Implemented Salesforce OAuth, multi-tenant workspaces, and schema-driven autocomplete.",
+    "Next.js, TypeScript and Supabase app with Salesforce OAuth, multi-tenant workspaces, natural-language-to-SOQL (Claude API) and schema-driven autocomplete.",
   ],
 } as const;
 
 export const skillGroups = [
   {
-    label: "Salesforce Core",
-    items: [
-      "Apex (sync/async)",
-      "Lightning Web Components",
-      "SOQL/SOSL",
-      "Flow Builder",
-      "Platform Events",
-      "Trigger Actions Framework",
-      "Sales Cloud, Service Cloud, Health Cloud, Nonprofit Cloud",
-      "Data Cloud (data harmonization, unified data models)",
-    ],
+    label: "Salesforce",
+    items: ["Apex", "LWC", "SOQL/SOSL", "Flow", "Platform Events", "Trigger Actions Framework", "Health Cloud", "Data Cloud"],
   },
   {
-    label: "AI & Emerging",
-    items: [
-      "Agentforce",
-      "RAG",
-      "Prompt engineering",
-      "Claude API",
-      "MCP servers",
-      "Model-context-driven engineering",
-    ],
+    label: "Architecture & integration",
+    items: ["Solution design", "ERD & data modeling", "REST/SOAP APIs", "SAP", "Microsoft Graph", "External Client Apps"],
   },
   {
-    label: "Integration",
-    items: [
-      "REST/SOAP APIs",
-      "SAP integration",
-      "Microsoft Graph API",
-      "Salesforce External Client App Credentials",
-    ],
+    label: "AI-assisted delivery",
+    items: ["Claude Code", "MCP servers", "Claude API", "Agentforce"],
   },
   {
-    label: "Full stack & tooling",
-    items: ["Next.js", "React", "Node.js", "Supabase", "Vercel", "Salesforce DX", "Git CI/CD"],
+    label: "Full stack & tools",
+    items: ["Next.js", "React", "Node.js", "Supabase", "Salesforce DX", "Copado", "Azure DevOps"],
   },
 ] as const;
 
@@ -115,9 +96,5 @@ export const certifications = [
 
 export const education = [
   { degree: "MBA, Business Analytics", school: "Liverpool Business School", period: "2023–2025" },
-  {
-    degree: "BTech, Computer Science Engineering",
-    school: "Amrita Vishwa Vidyapeetham",
-    period: "2017–2021",
-  },
+  { degree: "BTech, Computer Science Engineering", school: "Amrita Vishwa Vidyapeetham", period: "2017–2021" },
 ] as const;

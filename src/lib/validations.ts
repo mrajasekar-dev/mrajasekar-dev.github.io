@@ -18,6 +18,10 @@ export const siteSettingsSchema = z.object({
     tagline: z.string().trim().min(1, "Add a tagline.").max(200),
     ctaLabel: z.string().trim().min(1, "Add a button label.").max(60),
   }),
+  availability: z.object({
+    status: z.enum(["open", "limited", "booked"]),
+    note: z.string().trim().max(140),
+  }),
 });
 
 export type SiteSettingsValues = z.infer<typeof siteSettingsSchema>;
@@ -45,6 +49,11 @@ export const contactFormSchema = z.object({
   email: z.string().trim().email("Enter a valid work email."),
   company: z.string().trim().min(1, "Enter your company."),
   message: z.string().trim().min(10, "Give a little more detail — a sentence or two is fine."),
+  topic: z.string().trim().max(80).optional(),
+  budget: z.string().trim().max(40).optional(),
+  timeline: z.string().trim().max(40).optional(),
+  // Hidden field real visitors never fill in; non-empty means a bot.
+  website: z.string().trim().max(0, "").optional(),
 });
 
 export type ContactFormValues = z.infer<typeof contactFormSchema>;
@@ -54,6 +63,7 @@ export const bookingFormSchema = z.object({
   email: z.string().trim().email("Enter a valid work email."),
   company: z.string().trim().min(1, "Enter your company."),
   notes: z.string().trim().max(1000).optional(),
+  topic: z.string().trim().max(80).optional(),
   slot: z.string().trim().refine((v) => !Number.isNaN(Date.parse(v)), "Invalid time slot."),
   // Hidden field real visitors never fill in; non-empty means a bot.
   website: z.string().trim().max(0, "").optional(),

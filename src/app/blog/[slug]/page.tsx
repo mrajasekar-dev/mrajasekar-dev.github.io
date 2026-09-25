@@ -3,8 +3,9 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
-import { Section } from "@/components/section";
-import { CTASection } from "@/components/cta-section";
+import { Container } from "@/components/brief/container";
+import { CtaBand } from "@/components/brief/cta-band";
+import { formatPostDate } from "@/components/brief/post-list";
 import { channelLabels, getAllSlugs, getPostBySlug } from "@/lib/blog";
 import { siteConfig } from "@/config/site";
 
@@ -35,15 +36,6 @@ export async function generateMetadata({
   };
 }
 
-function formatDate(iso: string) {
-  return new Intl.DateTimeFormat("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-    timeZone: "UTC",
-  }).format(new Date(iso));
-}
-
 export default async function BlogPostPage({
   params,
 }: {
@@ -65,49 +57,49 @@ export default async function BlogPostPage({
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <Section as="div" spacing="top" border={false} className="max-w-3xl">
-        <Link
-          href="/blog"
-          className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
-        >
-          <ArrowLeft className="size-4" /> Back to blog
-        </Link>
+      <article>
+        <header>
+          <Container className="pt-10 pb-12 sm:pt-16">
+            <div className="flex items-center justify-between">
+              <Link href="/blog" className="annot inline-flex items-center gap-1.5 hover:text-foreground">
+                <ArrowLeft className="size-3.5" aria-hidden /> All writing
+              </Link>
+              <p className="annot text-brand">{channelLabels[post.channel]}</p>
+            </div>
+            <div className="mx-auto mt-12 max-w-3xl">
+              <h1 className="display text-4xl text-balance sm:text-5xl">{post.title}</h1>
+              <p className="mt-6 text-lg leading-relaxed text-muted-foreground">{post.excerpt}</p>
+              <p className="annot mt-8 flex flex-wrap gap-x-4 gap-y-1">
+                <span>{siteConfig.name}</span>
+                <span>{formatPostDate(post.date, "long")}</span>
+                <span>{post.readingTime} min read</span>
+              </p>
+            </div>
+          </Container>
+        </header>
 
-        <p className="mt-6 font-mono text-xs uppercase tracking-[0.14em] text-brand">
-          {channelLabels[post.channel]}
-        </p>
-        <h1 className="mt-3 text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
-          {post.title}
-        </h1>
-        <p className="mt-4 text-sm text-muted-foreground">
-          {formatDate(post.date)} · {post.readingTime} min read
-        </p>
-      </Section>
+        <Container className="max-w-4xl pb-6">
+          {/* eslint-disable-next-line @next/next/no-img-element -- local SVG / Blob illustration */}
+          <img
+            src={post.coverImage}
+            alt={post.coverImageAlt}
+            width={1200}
+            height={675}
+            className="w-full rounded-xl border border-rule bg-paper"
+          />
+        </Container>
 
-      <Section spacing="sm" border={false} className="max-w-3xl">
-        {/* eslint-disable-next-line @next/next/no-img-element -- local SVG illustration */}
-        <img
-          src={post.coverImage}
-          alt={post.coverImageAlt}
-          width={1200}
-          height={675}
-          className="w-full rounded-xl border border-border"
-        />
-      </Section>
+        <Container className="max-w-3xl py-12 sm:py-16">
+          <div
+            className="prose prose-lg prose-neutral max-w-none dark:prose-invert prose-headings:font-medium prose-headings:tracking-tight prose-a:text-brand prose-a:underline-offset-4 prose-strong:text-foreground prose-code:before:content-none prose-code:after:content-none prose-pre:border prose-pre:border-rule prose-pre:bg-paper prose-pre:text-foreground prose-img:rounded-lg prose-img:border prose-img:border-rule"
+            dangerouslySetInnerHTML={{ __html: post.html }}
+          />
+        </Container>
+      </article>
 
-      <Section spacing="sm" className="max-w-3xl" border={false}>
-        <div
-          className="prose prose-neutral max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-a:text-brand prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl prose-img:border prose-img:border-border prose-strong:text-foreground prose-code:before:content-none prose-code:after:content-none dark:prose-invert"
-          dangerouslySetInnerHTML={{ __html: post.html }}
-        />
-      </Section>
-
-      <CTASection />
+      <CtaBand />
     </>
   );
 }

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
-import { Section } from "@/components/section";
-import { SectionHeader } from "@/components/section-header";
+import { PageHero } from "@/components/brief/page-hero";
+import { Container } from "@/components/brief/container";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -13,27 +13,28 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <Section as="div" spacing="top" border={false} className="max-w-2xl pb-14 sm:pb-16">
-      <SectionHeader as="h1" eyebrow="Legal" title="Terms" />
-      <div className="mt-6 flex flex-col gap-4 text-sm leading-relaxed text-muted-foreground">
-        <p>
-          This website is informational. It describes {siteConfig.name}&rsquo;s Salesforce
-          consulting practice and provides a way to get in touch — it isn&rsquo;t a
-          transactional platform, and nothing on it constitutes a binding offer or
-          agreement.
-        </p>
-        <p>
-          Any engagement — scope, timeline, and terms — is agreed separately and
-          directly between you and {siteConfig.name} before any work begins.
-        </p>
-        <p>
-          Questions about these terms can be sent to{" "}
-          <a href={`mailto:${siteConfig.email}`} className="text-brand hover:underline underline-offset-4">
-            {siteConfig.email}
-          </a>
-          .
-        </p>
-      </div>
-    </Section>
+    <>
+      <PageHero label="Legal" title="Terms of use" />
+      <Container className="max-w-3xl pb-16">
+        <div className="flex flex-col gap-5 leading-relaxed text-foreground/85">
+          <p>
+            This website describes {siteConfig.name}&rsquo;s Salesforce consulting practice and provides a way to get in
+            touch. Nothing on it is a binding offer or agreement.
+          </p>
+          <p>
+            The engagement principles described on this site reflect how I work. Each engagement&rsquo;s scope,
+            timeline, price and terms are agreed in writing, directly between you and {siteConfig.name}, before any work
+            begins.
+          </p>
+          <p>
+            Questions:{" "}
+            <a href={`mailto:${siteConfig.email}`} className="text-brand underline underline-offset-4">
+              {siteConfig.email}
+            </a>
+            .
+          </p>
+        </div>
+      </Container>
+    </>
   );
 }

@@ -1,6 +1,9 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
+
 import { contactFormSchema } from "@/lib/validations";
+import { recordInquiry } from "@/lib/inbox-store";
 
 export type ContactFormState = {
   status: "idle" | "success" | "error";
@@ -8,10 +11,12 @@ export type ContactFormState = {
   fieldErrors?: Partial<Record<string, string>>;
 };
 
-// No email/CRM provider is wired up yet — there are no credentials to send
-// this anywhere real. This validates the submission server-side and logs it,
-// structured so Resend/HubSpot/Salesforce can replace the log line later
-// without changing the form or this action's shape.
+function optional(value: FormDataEntryValue | null) {
+  return typeof value === "string" && value.trim() ? value : undefined;
+}
+
+// Persists to the admin Inbox (Vercel Blob). No outbound email provider is
+// configured yet, so the owner sees new inquiries in /admin rather than by mail.
 export async function submitContactForm(
   _prevState: ContactFormState,
   formData: FormData,
@@ -21,6 +26,10 @@ export async function submitContactForm(
     email: formData.get("email"),
     company: formData.get("company"),
     message: formData.get("message"),
+    topic: optional(formData.get("topic")),
+    budget: optional(formData.get("budget")),
+    timeline: optional(formData.get("timeline")),
+    website: optional(formData.get("website")),
   };
 
   const parsed = contactFormSchema.safeParse(raw);
@@ -35,15 +44,30 @@ export async function submitContactForm(
     }
     return {
       status: "error",
-      message: "Please fix the fields below.",
+      message: "A couple of fields need another look.",
       fieldErrors,
     };
   }
 
-  console.log("[contact-form]", parsed.data);
+  const { website, message, ...rest } = parsed.data;
+  // Honeypot tripped — report success so bots learn nothing.
+  if (website) {
+    return { status: "success", message: "Thanks — received." };
+  }
+
+  try {
+    await recordInquiry({ kind: "message", body: message, ...rest });
+    revalidatePath("/admin", "layout");
+  } catch (err) {
+    console.error("[contact-form] failed to persist", err);
+    return {
+      status: "error",
+      message: "That didn't go through on my side. Please email me directly instead.",
+    };
+  }
 
   return {
     status: "success",
-    message: "Thanks — this has been received. Expect a reply by email shortly.",
+    message: "Thanks, I'll get back to you by email.",
   };
 }

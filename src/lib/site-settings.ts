@@ -1,6 +1,8 @@
 import { get, put } from "@vercel/blob";
 
-import { siteConfig, primaryCta } from "@/config/site";
+import { primaryCta } from "@/config/site";
+
+export type AvailabilityStatus = "open" | "limited" | "booked";
 
 export type SiteSettings = {
   colors: {
@@ -11,21 +13,36 @@ export type SiteSettings = {
     tagline: string;
     ctaLabel: string;
   };
+  availability: {
+    status: AvailabilityStatus;
+    /** Short human line, e.g. "One slot opens mid-November". */
+    note: string;
+  };
 };
 
-const SETTINGS_PATHNAME = "settings.json";
+// v3 = the minimal redesign. Settings saved under earlier keys were tuned for
+// previous designs (palette and headline), so they are deliberately not carried over.
+const SETTINGS_PATHNAME = "settings.v3.json";
 
-// Hex approximations of the oklch values in globals.css, so the site looks
-// the same as it does today until someone actually edits these in /admin.
 export const defaultSiteSettings: SiteSettings = {
   colors: {
-    light: { background: "#f8f6f3", foreground: "#2a2826", brand: "#3a5a95" },
-    dark: { background: "#201f1d", foreground: "#f0eeea", brand: "#92aee0" },
+    light: { background: "#ffffff", foreground: "#0b0b0c", brand: "#1d3a8a" },
+    dark: { background: "#0b0b0c", foreground: "#ededed", brand: "#93b0ff" },
   },
   hero: {
-    tagline: siteConfig.tagline,
+    tagline: "I design and build *Salesforce solutions.*",
     ctaLabel: primaryCta.label,
   },
+  availability: {
+    status: "open",
+    note: "",
+  },
+};
+
+export const availabilityLabels: Record<AvailabilityStatus, string> = {
+  open: "Available for projects",
+  limited: "Limited availability",
+  booked: "Not taking new projects",
 };
 
 function isBlobConfigured(): boolean {
@@ -39,18 +56,22 @@ function mergeWithDefaults(partial: Partial<SiteSettings> | null | undefined): S
       dark: { ...defaultSiteSettings.colors.dark, ...partial?.colors?.dark },
     },
     hero: { ...defaultSiteSettings.hero, ...partial?.hero },
+    availability: { ...defaultSiteSettings.availability, ...partial?.availability },
   };
+}
+
+async function readJson(pathname: string): Promise<Partial<SiteSettings> | null> {
+  const result = await get(pathname, { access: "private" });
+  if (!result) return null;
+  const text = await new Response(result.stream).text();
+  return JSON.parse(text);
 }
 
 export async function getSiteSettings(): Promise<SiteSettings> {
   if (!isBlobConfigured()) return defaultSiteSettings;
 
   try {
-    const result = await get(SETTINGS_PATHNAME, { access: "private" });
-    if (!result) return defaultSiteSettings;
-
-    const text = await new Response(result.stream).text();
-    return mergeWithDefaults(JSON.parse(text));
+    return mergeWithDefaults(await readJson(SETTINGS_PATHNAME));
   } catch {
     return defaultSiteSettings;
   }

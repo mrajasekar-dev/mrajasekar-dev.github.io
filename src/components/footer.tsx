@@ -1,75 +1,59 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import { GithubIcon, LinkedinIcon, XIcon } from "@/components/icons";
-import { siteConfig } from "@/config/site";
+import { Container } from "@/components/brief/container";
+import { nav, siteConfig } from "@/config/site";
 
 export function Footer() {
+  const pathname = usePathname();
+  if (pathname.startsWith("/admin")) return null;
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border/70">
-      <div className="mx-auto max-w-6xl px-6 py-10">
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
-          <div>
-            <p className="text-sm font-semibold">{siteConfig.name}</p>
-            <p className="text-sm text-muted-foreground">{siteConfig.title}</p>
-            <p className="mt-2 text-sm text-muted-foreground">{siteConfig.location}</p>
-            <p className="text-sm text-muted-foreground">{siteConfig.serviceArea}</p>
-          </div>
-
-          <div className="flex flex-col gap-1 text-sm sm:items-end">
-            <a
-              href={`mailto:${siteConfig.email}`}
-              className="text-foreground hover:text-brand transition-colors"
-            >
-              {siteConfig.email}
-            </a>
-            <a
-              href={siteConfig.linkedin}
-              target="_blank"
-              rel="noreferrer noopener"
-              className="inline-flex items-center gap-1.5 text-foreground hover:text-brand transition-colors sm:justify-end"
-            >
-              <LinkedinIcon className="size-4" />
-              LinkedIn
-            </a>
-            <div className="mt-1 flex items-center gap-4 sm:justify-end">
-              <a
-                href={siteConfig.github}
-                target="_blank"
-                rel="noreferrer noopener"
-                aria-label="GitHub"
-                className="text-muted-foreground hover:text-brand transition-colors"
-              >
-                <GithubIcon className="size-[18px]" />
-              </a>
-              <a
-                href={siteConfig.twitter}
-                target="_blank"
-                rel="noreferrer noopener"
-                aria-label="X (Twitter)"
-                className="text-muted-foreground hover:text-brand transition-colors"
-              >
-                <XIcon className="size-[18px]" />
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-8 flex flex-col-reverse gap-4 border-t border-border/70 pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            © {year} {siteConfig.name}
+    <footer className="mt-12">
+      <Container>
+        <div className="flex flex-col gap-8 border-t border-rule py-10 sm:flex-row sm:items-start sm:justify-between">
+        <div>
+          <p className="font-semibold tracking-tight">{siteConfig.name}</p>
+          <p className="mt-1 text-sm text-muted-foreground">
+            {siteConfig.title} · {siteConfig.location}
           </p>
-          <div className="flex gap-5">
-            <Link href="/privacy" className="hover:text-foreground transition-colors">
-              Privacy
-            </Link>
-            <Link href="/terms" className="hover:text-foreground transition-colors">
-              Terms
-            </Link>
+          <a href={`mailto:${siteConfig.email}`} className="mt-3 inline-block text-sm hover:text-brand">
+            {siteConfig.email}
+          </a>
+        </div>
+        <div className="flex flex-col gap-4 sm:items-end">
+          <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
+            {nav.map((item) => (
+              <Link key={item.href} href={item.href} className="hover:text-foreground">
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+          <div className="flex items-center gap-4 text-muted-foreground">
+            {[
+              { href: siteConfig.linkedin, label: "LinkedIn", Icon: LinkedinIcon },
+              { href: siteConfig.github, label: "GitHub", Icon: GithubIcon },
+              { href: siteConfig.twitter, label: "X", Icon: XIcon },
+            ].map(({ href, label, Icon }) => (
+              <a key={label} href={href} target="_blank" rel="noreferrer noopener" aria-label={label} className="hover:text-foreground">
+                <Icon className="size-4" />
+              </a>
+            ))}
           </div>
         </div>
-      </div>
+        </div>
+      </Container>
+      <Container className="flex justify-between pb-10 text-xs text-muted-foreground">
+        <p>© {year} {siteConfig.name}</p>
+        <div className="flex gap-5">
+          <Link href="/privacy" className="hover:text-foreground">Privacy</Link>
+          <Link href="/terms" className="hover:text-foreground">Terms</Link>
+        </div>
+      </Container>
     </footer>
   );
 }

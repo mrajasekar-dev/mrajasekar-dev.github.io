@@ -1,180 +1,127 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 
-import { Section } from "@/components/section";
-import { SectionHeader } from "@/components/section-header";
-import { Reveal } from "@/components/reveal";
-import { CTASection } from "@/components/cta-section";
-import {
-  intro,
-  experience,
-  independentProject,
-  skillGroups,
-  certifications,
-  education,
-  award,
-} from "@/content/about";
+import { PageHero } from "@/components/brief/page-hero";
+import { Chapter } from "@/components/brief/chapter";
+import { CtaBand } from "@/components/brief/cta-band";
+import { intro, experience, certifications, education, award, skillGroups } from "@/content/about";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "About",
-  description: `About ${siteConfig.name} — a Salesforce developer and technical consultant's background, experience, and why this practice exists.`,
+  description: `About ${siteConfig.name}, Senior Salesforce Developer and ex-Salesforce engineer based in Bengaluru.`,
   alternates: { canonical: "/about" },
 };
+
+const salesforcePhoto = experience.find((job) => job.photo)?.photo;
 
 export default function AboutPage() {
   return (
     <>
-      <Section as="div" spacing="top" border={false} className="max-w-6xl pb-14 sm:pb-16">
-        <div className="flex flex-col gap-8 sm:flex-row sm:items-center">
-          <div className="w-full shrink-0 sm:w-96">
-            <Image
-              src="/rajasekar-title.jpg"
-              alt="Rajasekar M wearing a Salesforce badge"
-              width={1800}
-              height={1557}
-              priority
-              sizes="(min-width: 640px) 384px, 100vw"
-              className="h-auto w-full rounded-2xl object-cover"
-            />
-          </div>
-          <div>
-            <SectionHeader as="h1" eyebrow="About" title={siteConfig.name} />
-            <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              {intro.body}
+      <PageHero
+        label="About"
+        title={<>Hi, I&rsquo;m Raj.</>}
+        intro={intro.body}
+        aside={
+          <Image
+            src="/rajasekar-title.jpg"
+            alt="Rajasekar M wearing a Salesforce badge"
+            width={1800}
+            height={1557}
+            priority
+            sizes="(min-width: 1024px) 380px, 100vw"
+            className="aspect-[4/5] h-auto w-full rounded-2xl object-cover"
+          />
+        }
+      />
+
+      <Chapter label="Background" title="A bit about me">
+        <div className="grid gap-10 lg:grid-cols-2">
+          <div className="flex flex-col gap-5 text-lg leading-relaxed text-muted-foreground">
+            <p>
+              At Salesforce I delivered for enterprise customers in automotive, healthcare and the non-profit sector.
+            </p>
+            <p>
+              Since February 2026 I&rsquo;ve been at GoKarya, a boutique Salesforce consultancy, working with US clients.
+              Outside work I build small tools, like Orglore, a SOQL app for Salesforce developers.
             </p>
           </div>
-        </div>
-
-        {/* Experience — text and photos run as two independent tracks, not paired per row */}
-        <h2 className="mt-14 text-xl font-semibold tracking-tight sm:text-2xl">Experience</h2>
-        <div className="mt-6 flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-16">
-          <div className="flex max-w-xl flex-1 flex-col gap-12">
-            {experience.map((job) => (
-              <Reveal key={`${job.org}-${job.role}`}>
-                <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
-                  <h3 className="text-lg font-semibold">
-                    {job.role}{" "}
-                    <span className="font-normal text-muted-foreground">· {job.org}</span>
-                  </h3>
-                  <p className="text-sm text-muted-foreground">{job.period}</p>
-                </div>
-                <ul className="mt-3 flex flex-col gap-2">
-                  {job.bullets.map((bullet) => (
-                    <li
-                      key={bullet}
-                      className="flex gap-2 text-sm leading-relaxed text-muted-foreground"
-                    >
-                      <span className="mt-2 size-1 shrink-0 rounded-full bg-brand" />
-                      {bullet}
-                    </li>
-                  ))}
-                </ul>
-              </Reveal>
-            ))}
-
-            <Reveal>
-              <h3 className="text-lg font-semibold">
-                {independentProject.name}{" "}
-                <span className="font-normal text-muted-foreground">
-                  · {independentProject.description}
-                </span>
-              </h3>
-              <ul className="mt-3 flex flex-col gap-2">
-                {independentProject.bullets.map((bullet) => (
-                  <li
-                    key={bullet}
-                    className="flex gap-2 text-sm leading-relaxed text-muted-foreground"
-                  >
-                    <span className="mt-2 size-1 shrink-0 rounded-full bg-brand" />
-                    {bullet}
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-          </div>
-
-          <div className="flex w-full flex-col gap-8 lg:w-96 lg:shrink-0 lg:gap-20">
-            <Reveal>
+          <div className="grid grid-cols-2 gap-4">
+            {salesforcePhoto ? (
               <Image
-                src={award.src}
-                alt={award.alt}
-                width={award.width}
-                height={award.height}
-                sizes="(min-width: 1024px) 384px, 100vw"
-                className="h-auto w-full rounded-2xl object-cover"
+                src={salesforcePhoto.src}
+                alt={salesforcePhoto.alt}
+                width={salesforcePhoto.width}
+                height={salesforcePhoto.height}
+                sizes="(min-width: 1024px) 280px, 50vw"
+                className="h-full w-full rounded-xl object-cover"
               />
-            </Reveal>
-            {experience
-              .filter((job) => job.photo)
-              .map((job) => (
-                <Reveal key={job.photo!.src}>
-                  <Image
-                    src={job.photo!.src}
-                    alt={job.photo!.alt}
-                    width={job.photo!.width}
-                    height={job.photo!.height}
-                    sizes="(min-width: 1024px) 384px, 100vw"
-                    className="h-auto w-full rounded-2xl object-cover"
-                  />
-                </Reveal>
-              ))}
+            ) : null}
+            <Image
+              src={award.src}
+              alt={award.alt}
+              width={award.width}
+              height={award.height}
+              sizes="(min-width: 1024px) 280px, 50vw"
+              className="h-full w-full rounded-xl object-cover"
+            />
           </div>
         </div>
-      </Section>
+      </Chapter>
 
-      {/* Skills */}
-      <Section className="max-w-6xl">
-        <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">Technical skills</h2>
-        <div className="mt-6 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {skillGroups.map((group) => (
-            <Reveal key={group.label}>
-              <h3 className="text-sm font-semibold">{group.label}</h3>
-              <ul className="mt-2 flex flex-wrap gap-1.5">
-                {group.items.map((item) => (
-                  <li
-                    key={item}
-                    className="rounded-md border border-border bg-card px-2.5 py-1 text-xs text-muted-foreground"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-          ))}
-        </div>
-      </Section>
-
-      {/* Certifications & education */}
-      <Section className="max-w-6xl">
-        <div className="grid gap-8 sm:grid-cols-2">
-          <Reveal>
-            <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">Certifications</h2>
-            <ul className="mt-4 flex flex-col gap-2">
+      <Chapter label="Credentials" title="Certifications & education">
+        <div className="grid gap-10 lg:grid-cols-2">
+          <div>
+            <p className="font-medium">Certifications</p>
+            <ul className="mt-4 border-t border-rule">
               {certifications.map((cert) => (
-                <li key={cert} className="text-sm text-muted-foreground">
+                <li key={cert} className="border-b border-rule py-3 text-sm">
                   {cert}
                 </li>
               ))}
             </ul>
-          </Reveal>
-          <Reveal delay={100}>
-            <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">Education</h2>
-            <ul className="mt-4 flex flex-col gap-3">
+            <a
+              href={siteConfig.trailheadVerify}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="annot mt-4 inline-flex items-center gap-1 hover:text-brand"
+            >
+              Verify on Trailhead <ArrowUpRight className="size-3" aria-hidden />
+            </a>
+          </div>
+          <div>
+            <p className="font-medium">Education</p>
+            <ul className="mt-4 border-t border-rule">
               {education.map((edu) => (
-                <li key={edu.degree} className="text-sm">
-                  <p className="text-foreground">{edu.degree}</p>
-                  <p className="text-muted-foreground">
+                <li key={edu.degree} className="border-b border-rule py-3">
+                  <p className="text-sm font-medium">{edu.degree}</p>
+                  <p className="text-sm text-muted-foreground">
                     {edu.school} · {edu.period}
                   </p>
                 </li>
               ))}
             </ul>
-          </Reveal>
+          </div>
         </div>
-      </Section>
+      </Chapter>
 
-      <CTASection />
+      <Chapter label="Skills" title="Tools I use">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {skillGroups.map((group) => (
+            <div key={group.label}>
+              <p className="font-medium">{group.label}</p>
+              <ul className="mt-3 flex flex-col gap-1.5 text-sm text-muted-foreground">
+                {group.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </Chapter>
+
+      <CtaBand />
     </>
   );
 }

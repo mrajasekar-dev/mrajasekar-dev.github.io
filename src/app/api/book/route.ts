@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { isCalendarConfigured, getBusyRanges, createBookingEvent } from "@/lib/google-calendar";
 import { bookingFormSchema } from "@/lib/validations";
 import { schedulingConfig } from "@/config/scheduling";
+import { recordInquiry } from "@/lib/inbox-store";
 
 export async function POST(request: NextRequest) {
   if (!isCalendarConfigured()) {
@@ -53,8 +54,22 @@ export async function POST(request: NextRequest) {
       attendeeEmail: parsed.data.email,
       attendeeName: parsed.data.name,
       company: parsed.data.company,
-      notes: parsed.data.notes || "No additional notes provided.",
+      notes: [parsed.data.topic ? `Topic: ${parsed.data.topic}` : "", parsed.data.notes]
+        .filter(Boolean)
+        .join("\n\n") || "No additional notes provided.",
     });
+
+    // The calendar event is the source of truth; the inbox copy is for the
+    // admin dashboard, so a failure here must not fail the booking.
+    await recordInquiry({
+      kind: "booking",
+      name: parsed.data.name,
+      email: parsed.data.email,
+      company: parsed.data.company,
+      body: parsed.data.notes ?? "",
+      topic: parsed.data.topic,
+      slot: start.toISOString(),
+    }).catch((err) => console.error("[book] inbox write failed", err));
 
     return NextResponse.json({ ok: true });
   } catch {

@@ -1,8 +1,8 @@
 # Rajasekar M — Salesforce Principal Consultant
 
-Marketing/consulting website for an independent, founder-led Salesforce
-consulting practice. Statically exported and hosted on GitHub Pages at
-https://mrajasekar-dev.github.io.
+Personal site for Rajasekar M, Senior Salesforce Developer. Hosted on Vercel
+at https://rajasekar-m.vercel.app, with a password-protected admin ("Studio")
+at /admin for the inbox, blog posts and site settings.
 
 ## Stack
 
