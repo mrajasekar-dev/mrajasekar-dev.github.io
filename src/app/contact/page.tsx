@@ -30,7 +30,7 @@ export default async function ContactPage({ searchParams }: PageProps<"/contact"
       <PageHero label="Contact" title="Contact" intro={<>Email me at <a href={`mailto:${siteConfig.email}`} className="text-foreground underline underline-offset-4 hover:text-brand">{siteConfig.email}</a>, or use the form below.</>} />
 
       <section>
-        <Container className="grid gap-12 pb-16 lg:grid-cols-12">
+        <Container className="grid gap-8 pb-7 lg:grid-cols-12">
           <aside className="flex flex-col gap-4 text-sm lg:col-span-4">
             <p className="flex items-center gap-2 font-medium">
               <span className={cn("size-2 rounded-full", availability.status === "open" ? "bg-ok" : availability.status === "limited" ? "bg-amber-500" : "bg-muted-foreground")} />

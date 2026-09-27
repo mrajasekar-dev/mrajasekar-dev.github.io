@@ -8,7 +8,7 @@ export function CtaBand() {
   return (
     <section>
       <Container>
-        <div className="border-t border-rule py-20 sm:py-24">
+        <div className="border-t border-rule py-7 sm:py-9">
           <p className="text-sm font-medium text-brand">Contact</p>
           <p className="mt-3 max-w-2xl text-2xl leading-snug tracking-tight sm:text-3xl">
             You can reach me at{" "}

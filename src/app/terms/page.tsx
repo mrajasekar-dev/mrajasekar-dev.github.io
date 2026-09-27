@@ -15,7 +15,7 @@ export default function TermsPage() {
   return (
     <>
       <PageHero label="Legal" title="Terms of use" />
-      <Container className="max-w-3xl pb-16">
+      <Container className="max-w-3xl pb-7">
         <div className="flex flex-col gap-5 leading-relaxed text-foreground/85">
           <p>
             This website describes {siteConfig.name}&rsquo;s Salesforce consulting practice and provides a way to get in

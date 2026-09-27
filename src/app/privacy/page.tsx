@@ -15,7 +15,7 @@ export default function PrivacyPage() {
   return (
     <>
       <PageHero label="Legal" title="Privacy" intro="Short version: I collect only what you send me, use it only to reply, and delete it on request." />
-      <Container className="max-w-3xl pb-16">
+      <Container className="max-w-3xl pb-7">
         <div className="flex flex-col gap-5 leading-relaxed text-foreground/85">
           <p>
             <strong>What&rsquo;s collected.</strong> When you send a message or book a call, I receive your name, work

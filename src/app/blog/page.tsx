@@ -29,9 +29,9 @@ export default async function BlogPage() {
         intro="Deep-dives for people building on Salesforce, and plain-language advice for the people running a business on top of it."
       />
       <section>
-        <Container className="pb-16">
+        <Container className="pb-7">
           <Tabs defaultValue="all">
-            <TabsList className="mb-8">
+            <TabsList className="mb-5">
               <TabsTrigger value="all">All ({posts.length})</TabsTrigger>
               <TabsTrigger value="technical">Technical ({technical.length})</TabsTrigger>
               <TabsTrigger value="business">For clients ({business.length})</TabsTrigger>

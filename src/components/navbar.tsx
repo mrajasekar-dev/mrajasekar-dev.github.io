@@ -53,7 +53,7 @@ export function Navbar() {
       >
         Skip to content
       </a>
-      <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between gap-6 px-5 sm:px-8">
+      <div className="mx-auto flex h-14 max-w-[960px] items-center justify-between gap-6 px-5 sm:px-8">
         <Link href="/" className="flex items-center gap-3" aria-label={`${siteConfig.name}, home`}>
           <span className="text-[0.95rem] font-semibold tracking-tight">{siteConfig.name}</span>
         </Link>

@@ -12,12 +12,12 @@ export function PostList({ posts }: { posts: PostMeta[] }) {
     <ul className="divide-y divide-rule border-y border-rule">
       {posts.map((post) => (
         <li key={post.slug}>
-          <Link href={`/blog/${post.slug}`} className="group flex items-start justify-between gap-6 py-6">
+          <Link href={`/blog/${post.slug}`} className="group flex items-start justify-between gap-6 py-3">
             <div>
               <p className="annot">
                 {formatPostDate(post.date)} · {channelLabels[post.channel]} · {post.readingTime} min read
               </p>
-              <h3 className="mt-2 text-lg font-medium tracking-tight text-balance transition-colors group-hover:text-brand sm:text-xl">
+              <h3 className="mt-2 text-base font-medium tracking-tight text-balance transition-colors group-hover:text-brand sm:text-lg">
                 {post.title}
               </h3>
               <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">{post.excerpt}</p>

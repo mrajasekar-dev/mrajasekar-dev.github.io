@@ -13,9 +13,9 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-12">
+    <footer className="mt-4">
       <Container>
-        <div className="flex flex-col gap-8 border-t border-rule py-10 sm:flex-row sm:items-start sm:justify-between">
+        <div className="flex flex-col gap-5 border-t border-rule py-6 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <p className="font-semibold tracking-tight">{siteConfig.name}</p>
           <p className="mt-1 text-sm text-muted-foreground">

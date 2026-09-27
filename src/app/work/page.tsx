@@ -18,14 +18,14 @@ export default function WorkPage() {
     <>
       <PageHero label="Work" title="Selected projects" />
       <section>
-        <Container className="grid gap-4 pb-16 md:grid-cols-2 lg:grid-cols-3">
+        <Container className="grid gap-3 pb-7 md:grid-cols-2 lg:grid-cols-3">
           {caseNotes.map((note) => (
             <CaseNoteCard key={note.slug} note={note} />
           ))}
-          <article className="flex flex-col rounded-xl border border-dashed border-rule p-6">
+          <article className="flex flex-col rounded-lg border border-dashed border-rule p-4">
             <p className="annot">Side project</p>
-            <h3 className="mt-3 text-lg font-medium tracking-tight">{independentProject.name}</h3>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{independentProject.bullets[0]}</p>
+            <h3 className="mt-2 text-base font-medium tracking-tight">{independentProject.name}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{independentProject.bullets[0]}</p>
           </article>
         </Container>
       </section>

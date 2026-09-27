@@ -7,6 +7,8 @@ export type CaseNote = {
   summary: string;
   tags: string[];
   metric?: { figure: string; label: string };
+  /** Live link; the whole card opens it in a new tab. */
+  href?: string;
 };
 
 export const caseNotes: CaseNote[] = [
@@ -57,5 +59,14 @@ export const caseNotes: CaseNote[] = [
     summary: "Refactored legacy Apex, cleared technical debt and led complex data migrations.",
     tags: ["Apex", "Data migration"],
     metric: { figure: "50% → 85%", label: "Apex test coverage" },
+  },
+  {
+    slug: "rolo",
+    title: "Rolo: followers into a pipeline",
+    client: "My product · SaaS",
+    summary:
+      "Merges official exports from 18 platforms into one person per human, scores who's warm, and adds a lightweight CRM with inbox, pipeline, follow-ups and lead-capture pages. Local-first, so 14k people load in under 100 ms.",
+    tags: ["Next.js", "Local-first", "Identity merge"],
+    href: "https://rolo-ashy.vercel.app",
   },
 ];
