@@ -6,6 +6,7 @@ import { getAllPosts } from "@/lib/blog";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const routes = [
     "",
+    "/for-companies",
     "/work",
     "/blog",
     "/about",

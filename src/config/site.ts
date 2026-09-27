@@ -38,6 +38,7 @@ export const siteConfig = {
 } as const;
 
 export const nav = [
+  { label: "For companies", href: "/for-companies" },
   { label: "Work", href: "/work" },
   { label: "Writing", href: "/blog" },
   { label: "About", href: "/about" },

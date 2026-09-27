@@ -8,7 +8,9 @@ import { Chapter } from "@/components/brief/chapter";
 import { CtaLink } from "@/components/brief/cta-link";
 import { Emphasis } from "@/components/brief/emphasis";
 import { CaseNoteCard } from "@/components/brief/case-note-card";
+import { PlanCard } from "@/components/brief/plan-card";
 import { ProductCard } from "@/components/brief/product-card";
+import { TermGrid } from "@/components/brief/term-grid";
 import { CtaBand } from "@/components/brief/cta-band";
 import { PostList } from "@/components/brief/post-list";
 import { experience } from "@/content/about";
@@ -50,6 +52,9 @@ export default async function HomePage() {
               <Link href="#engagement" className="text-sm font-medium text-muted-foreground hover:text-foreground">
                 How it works
               </Link>
+              <Link href="/for-companies" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+                Not a consultancy?
+              </Link>
             </div>
           </div>
           <div className="w-[180px] shrink-0 lg:w-[190px]">
@@ -74,43 +79,14 @@ export default async function HomePage() {
       >
         <div className="grid gap-3 md:grid-cols-2">
           {plans.map((plan) => (
-            <article key={plan.name} className="flex flex-col rounded-lg border border-rule p-4">
-              <p className="annot">{plan.name}</p>
-              <p className="mt-2 flex items-baseline gap-2">
-                <span className="text-2xl font-medium tracking-tight">{plan.price}</span>
-                <span className="text-sm text-muted-foreground">{plan.cadence}</span>
-              </p>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{plan.summary}</p>
-              <ul className="mt-3 flex flex-col gap-1 text-sm leading-relaxed text-foreground/80">
-                {plan.points.map((point) => (
-                  <li key={point} className="flex gap-3">
-                    <span aria-hidden className="mt-2 size-1 shrink-0 rounded-full bg-brand" />
-                    {point}
-                  </li>
-                ))}
-              </ul>
-            </article>
+            <PlanCard key={plan.name} plan={plan} />
           ))}
         </div>
-        <dl className="mt-6 grid gap-x-8 gap-y-4 sm:grid-cols-2">
-          {terms.map((term) => (
-            <div key={term.title}>
-              <dt className="font-medium">{term.title}</dt>
-              <dd className="mt-1 text-sm leading-relaxed text-muted-foreground">{term.body}</dd>
-            </div>
-          ))}
-        </dl>
+        <TermGrid items={terms} className="mt-6" />
       </Chapter>
 
       <Chapter label="What I take on" title="The work partners hand me">
-        <dl className="grid gap-x-8 gap-y-4 sm:grid-cols-2">
-          {services.map((service) => (
-            <div key={service.title}>
-              <dt className="font-medium">{service.title}</dt>
-              <dd className="mt-1 text-sm leading-relaxed text-muted-foreground">{service.body}</dd>
-            </div>
-          ))}
-        </dl>
+        <TermGrid items={services} />
       </Chapter>
 
       <Chapter label="Experience" title="Where I’ve worked">
