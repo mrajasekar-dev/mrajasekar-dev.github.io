@@ -5,7 +5,6 @@ import { Container } from "@/components/brief/container";
 import { CaseNoteCard } from "@/components/brief/case-note-card";
 import { CtaBand } from "@/components/brief/cta-band";
 import { caseNotes } from "@/content/work";
-import { independentProject } from "@/content/about";
 
 export const metadata: Metadata = {
   title: "Work",
@@ -22,11 +21,6 @@ export default function WorkPage() {
           {caseNotes.map((note) => (
             <CaseNoteCard key={note.slug} note={note} />
           ))}
-          <article className="flex flex-col rounded-lg border border-dashed border-rule p-4">
-            <p className="annot">Side project</p>
-            <h3 className="mt-2 text-base font-medium tracking-tight">{independentProject.name}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{independentProject.bullets[0]}</p>
-          </article>
         </Container>
       </section>
       <CtaBand />

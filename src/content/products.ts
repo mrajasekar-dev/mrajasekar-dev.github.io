@@ -17,12 +17,4 @@ export const products: Product[] = [
     href: "https://rolo-ashy.vercel.app",
     tags: ["Next.js", "Local-first", "SaaS"],
   },
-  {
-    name: "Orglore",
-    tagline: "Your personal Salesforce query workspace",
-    summary:
-      "A SOQL query manager for Salesforce professionals: save, organise and run queries against your connected orgs, with a full SOQL reference always at hand.",
-    href: "https://orglore.vercel.app",
-    tags: ["Salesforce", "SOQL", "Next.js"],
-  },
 ];

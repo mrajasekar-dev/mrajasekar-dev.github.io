@@ -57,14 +57,6 @@ export const award = {
   height: 1322,
 } as const;
 
-export const independentProject = {
-  name: "Orglore",
-  description: "Full-stack SOQL SaaS",
-  bullets: [
-    "Next.js, TypeScript and Supabase app with Salesforce OAuth, multi-tenant workspaces, natural-language-to-SOQL (Claude API) and schema-driven autocomplete.",
-  ],
-} as const;
-
 export const skillGroups = [
   {
     label: "Salesforce",

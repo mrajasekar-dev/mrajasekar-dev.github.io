@@ -44,7 +44,7 @@ export default function AboutPage() {
             </p>
             <p>
               Since February 2026 I&rsquo;ve been at GoKarya, a boutique Salesforce consultancy, working with US clients.
-              Outside work I build small tools, like Orglore, a SOQL app for Salesforce developers.
+              Outside work I build small tools, like Rolo, a lightweight CRM for solo sellers.
             </p>
           </div>
           <div className="grid grid-cols-2 gap-4">
