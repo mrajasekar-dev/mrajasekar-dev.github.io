@@ -14,6 +14,8 @@ import { PostList } from "@/components/brief/post-list";
 import { experience } from "@/content/about";
 import { caseNotes } from "@/content/work";
 import { products } from "@/content/products";
+import { plans, terms } from "@/content/engagement";
+import { services } from "@/content/services";
 import { siteConfig } from "@/config/site";
 import { getSiteSettings } from "@/lib/site-settings";
 import { getAllPosts } from "@/lib/blog";
@@ -39,13 +41,14 @@ export default async function HomePage() {
               <Emphasis text={settings.hero.tagline} />
             </h1>
             <p className="mt-3 max-w-xl text-[15px] leading-relaxed sm:text-base text-muted-foreground">
-              I&rsquo;m a Senior Salesforce Developer at GoKarya, working with US clients. Before that I was a developer at
-              Salesforce. Most of my work is solution design, Apex, LWC and integrations.
+              When your backlog outgrows your bench, I join your delivery team as a white-label senior developer. Your
+              tools, your standards, your client relationship. Ex-Salesforce Professional Services, 7x certified,
+              strongest in integrations, Apex and LWC.
             </p>
             <div className="mt-5 flex flex-wrap items-center gap-5">
               <CtaLink href="/contact">{settings.hero.ctaLabel}</CtaLink>
-              <Link href="/work" className="text-sm font-medium text-muted-foreground hover:text-foreground">
-                View work
+              <Link href="#engagement" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+                How it works
               </Link>
             </div>
           </div>
@@ -62,6 +65,53 @@ export default async function HomePage() {
           </div>
         </Container>
       </section>
+
+      <Chapter
+        id="engagement"
+        label="How it works"
+        title="Start with a pilot, then keep me on monthly"
+        intro="One partner at a time, so you get consistent hours and one developer who knows your clients' orgs."
+      >
+        <div className="grid gap-3 md:grid-cols-2">
+          {plans.map((plan) => (
+            <article key={plan.name} className="flex flex-col rounded-lg border border-rule p-4">
+              <p className="annot">{plan.name}</p>
+              <p className="mt-2 flex items-baseline gap-2">
+                <span className="text-2xl font-medium tracking-tight">{plan.price}</span>
+                <span className="text-sm text-muted-foreground">{plan.cadence}</span>
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{plan.summary}</p>
+              <ul className="mt-3 flex flex-col gap-1 text-sm leading-relaxed text-foreground/80">
+                {plan.points.map((point) => (
+                  <li key={point} className="flex gap-3">
+                    <span aria-hidden className="mt-2 size-1 shrink-0 rounded-full bg-brand" />
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+        <dl className="mt-6 grid gap-x-8 gap-y-4 sm:grid-cols-2">
+          {terms.map((term) => (
+            <div key={term.title}>
+              <dt className="font-medium">{term.title}</dt>
+              <dd className="mt-1 text-sm leading-relaxed text-muted-foreground">{term.body}</dd>
+            </div>
+          ))}
+        </dl>
+      </Chapter>
+
+      <Chapter label="What I take on" title="The work partners hand me">
+        <dl className="grid gap-x-8 gap-y-4 sm:grid-cols-2">
+          {services.map((service) => (
+            <div key={service.title}>
+              <dt className="font-medium">{service.title}</dt>
+              <dd className="mt-1 text-sm leading-relaxed text-muted-foreground">{service.body}</dd>
+            </div>
+          ))}
+        </dl>
+      </Chapter>
 
       <Chapter label="Experience" title="Where I’ve worked">
         <ol className="flex flex-col gap-6">

@@ -24,8 +24,8 @@ export const experience: ExperienceEntry[] = [
     location: "Bengaluru, India",
     summary: "Boutique Salesforce consultancy, working directly with US enterprise clients.",
     bullets: [
-      "Built a clinical trial management platform for a US medical device company, reused across three systems.",
-      "Technical advisor on the steering committee for Becknell Industrial: discovery, architecture and go-live.",
+      "Clinical trial management on Salesforce for a US medical device company.",
+      "Technical advisor to a US real estate firm's steering committee, from discovery through go-live.",
       "Designed a real-time analytics dashboard using Lightning Message Service, with scheduled executive digests.",
     ],
   },
@@ -44,7 +44,7 @@ export const experience: ExperienceEntry[] = [
     bullets: [
       "Event-driven order notifications (SMS, WhatsApp, push) on Platform Events for an Indian EV startup.",
       "Two-way SAP–Salesforce sync through a custom Apex REST layer.",
-      "Health Cloud data architecture for clients including Blue Shield California and AARP.",
+      "Health Cloud data architecture for US health insurers and a national non-profit.",
       "Raised Apex test coverage from 50% to 85% on a legacy non-profit codebase.",
     ],
   },

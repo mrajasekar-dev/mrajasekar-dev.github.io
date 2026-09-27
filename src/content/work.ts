@@ -1,4 +1,4 @@
-// Selected work, from the founder's CV (Sept 2026).
+// Selected work, from the founder's CV (Sept 2026). Current-employer client work stays off this list.
 
 export type CaseNote = {
   slug: string;
@@ -12,30 +12,6 @@ export type CaseNote = {
 };
 
 export const caseNotes: CaseNote[] = [
-  {
-    slug: "clinical-trials",
-    title: "Clinical trial management platform",
-    client: "US medical device company · GoKarya",
-    summary:
-      "Procedure checklists, a clinical data importer with duplicate detection, and dashboards across 4 concurrent studies, on one template-and-clone data model now reused across three systems.",
-    tags: ["Health Cloud", "LWC", "Data model"],
-  },
-  {
-    slug: "becknell",
-    title: "Solution design for Becknell Industrial",
-    client: "US industrial real estate · GoKarya",
-    summary:
-      "Steering-committee technical advisor: discovery, ERD and architecture, legacy data deduplication, and a feedback-tracking app ahead of go-live.",
-    tags: ["Architecture", "Data migration", "Stakeholders"],
-  },
-  {
-    slug: "analytics-dashboard",
-    title: "Real-time clinical analytics dashboard",
-    client: "US medical device company · GoKarya",
-    summary:
-      "Every chart syncs from a single filter using Lightning Message Service, with scheduled Apex snapshots and weekly executive email digests.",
-    tags: ["LWC", "Lightning Message Service", "Scheduled Apex"],
-  },
   {
     slug: "ev-notifications",
     title: "Event-driven order notifications",

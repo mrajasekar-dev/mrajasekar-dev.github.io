@@ -10,7 +10,7 @@ import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "About",
-  description: `About ${siteConfig.name}, Senior Salesforce Developer and ex-Salesforce engineer based in Bengaluru.`,
+  description: `About ${siteConfig.name}, ex-Salesforce engineer and white-label Salesforce developer for consulting partners, based in Bengaluru.`,
   alternates: { canonical: "/about" },
 };
 
@@ -44,7 +44,7 @@ export default function AboutPage() {
             </p>
             <p>
               Since February 2026 I&rsquo;ve been at GoKarya, a boutique Salesforce consultancy, working with US clients.
-              Outside work I build small tools, like Rolo, a lightweight CRM for solo sellers.
+              I also take on one consulting partner at a time as a white-label developer, and I build small tools like Rolo, a lightweight CRM for solo sellers.
             </p>
           </div>
           <div className="grid grid-cols-2 gap-4">

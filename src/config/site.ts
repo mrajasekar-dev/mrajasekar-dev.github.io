@@ -5,10 +5,10 @@
 export const siteConfig = {
   name: "Rajasekar M",
   shortName: "Raj",
-  title: "Senior Salesforce Developer",
-  tagline: "I design and build Salesforce solutions.",
+  title: "Salesforce Developer for Consulting Partners",
+  tagline: "Senior Salesforce capacity for consulting partners.",
   description:
-    "Rajasekar M is a Senior Salesforce Developer in Bengaluru, working on solution design, Apex, LWC and integrations.",
+    "Rajasekar M is a white-label senior Salesforce developer for consulting partners: ex-Salesforce Professional Services, 7x certified, strongest in integrations, Apex and LWC.",
   url: "https://rajasekar-m.vercel.app",
   email: "mrajasekar.dev@gmail.com",
   linkedin: "https://www.linkedin.com/in/mrajasekar-dev/",
@@ -20,6 +20,9 @@ export const siteConfig = {
   timezone: "Asia/Kolkata",
   serviceArea: "Based in Bengaluru, India. Working remotely.",
   keywords: [
+    "white-label Salesforce developer",
+    "Salesforce subcontractor for consulting partners",
+    "offshore Salesforce developer",
     "Salesforce freelancer",
     "independent Salesforce consultant",
     "Salesforce consultant for growing businesses",
@@ -41,5 +44,5 @@ export const nav = [
   { label: "Contact", href: "/contact" },
 ] as const;
 
-export const primaryCta = { label: "Get in touch", href: "/contact" } as const;
+export const primaryCta = { label: "Book an intro call", href: "/contact" } as const;
 export const secondaryCta = { label: "Connect on LinkedIn", href: siteConfig.linkedin } as const;

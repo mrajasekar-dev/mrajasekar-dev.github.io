@@ -11,7 +11,7 @@ export function CtaBand() {
         <div className="border-t border-rule py-7 sm:py-9">
           <p className="text-sm font-medium text-brand">Contact</p>
           <p className="mt-3 max-w-2xl text-2xl leading-snug tracking-tight sm:text-3xl">
-            You can reach me at{" "}
+            Have overflow work? Reach me at{" "}
             <a href={`mailto:${siteConfig.email}`} className="underline decoration-rule underline-offset-[6px] hover:text-brand hover:decoration-brand">
               {siteConfig.email}
             </a>
@@ -21,7 +21,7 @@ export function CtaBand() {
             </a>
             , or by{" "}
             <Link href="/contact" className="underline decoration-rule underline-offset-[6px] hover:text-brand hover:decoration-brand">
-              booking a call
+              booking an intro call
             </Link>
             .
           </p>
