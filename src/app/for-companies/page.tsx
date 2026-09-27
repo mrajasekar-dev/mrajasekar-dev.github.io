@@ -16,7 +16,7 @@ import { packages } from "@/content/packages";
 export const metadata: Metadata = {
   title: "For companies",
   description:
-    "A fixed-price Salesforce Health Check and a fractional Salesforce admin and developer for US companies under 50 licences, from an ex-Salesforce, 7x certified engineer.",
+    "A fixed-price Salesforce Fix Sprint, integration packages and a fractional Salesforce admin and developer for US companies under 50 licences, from an ex-Salesforce, 7x certified engineer.",
   alternates: { canonical: "/for-companies" },
 };
 
@@ -30,10 +30,10 @@ export default function ForCompaniesPage() {
           <>
             <p>
               For companies with up to about 50 Salesforce licences and no full-time admin or developer. Start with a
-              fixed-price health check. Keep me on monthly only if it&rsquo;s useful.
+              two-week, fixed-price Fix Sprint. Keep me on monthly only if it&rsquo;s useful.
             </p>
             <div className="mt-5 flex flex-wrap items-center gap-5">
-              <CtaLink href="/contact?topic=health-check">Book a free 20-minute call</CtaLink>
+              <CtaLink href="/contact?topic=fix-sprint">Book a free 20-minute call</CtaLink>
               <Link href="#pricing" className="text-sm font-medium text-muted-foreground hover:text-foreground">
                 See pricing
               </Link>
@@ -82,11 +82,11 @@ export default function ForCompaniesPage() {
         </ul>
       </Chapter>
 
-      <Chapter label="The health check" title="What I look at">
+      <Chapter label="The Fix Sprint" title="Where I look first">
         <TermGrid items={checkAreas} />
       </Chapter>
 
-      <Chapter label="How it starts" title="From first call to fix list in about a week">
+      <Chapter label="How it starts" title="From first call to a working org in about two weeks">
         <ol className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step, i) => (
             <li key={step.title} className="rounded-lg border border-rule p-4">

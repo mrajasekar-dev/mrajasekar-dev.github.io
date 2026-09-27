@@ -1,17 +1,17 @@
-// The direct offer for companies running Salesforce without an in-house team. Prices live here and in engagement.ts.
+// The direct offer for companies running Salesforce without an in-house team. Prices live here, in engagement.ts and packages.ts.
 
 import type { Plan } from "@/content/engagement";
 
 export const companyPlans: Plan[] = [
   {
-    name: "Salesforce Health Check",
-    price: "$750",
-    cadence: "fixed price · 5 business days",
-    summary: "I go through your org end to end and tell you, in plain English, what's broken, what's risky and what to fix first.",
+    name: "Salesforce Fix Sprint",
+    price: "$2,500",
+    cadence: "fixed price · 2 weeks",
+    summary: "I find what's hurting your team most and fix it, not just report it. You end the two weeks with a working org and a plan for the rest.",
     points: [
-      "A written report with a ranked fix list and effort for each item",
-      "A 30-minute walkthrough call with your team",
-      "Yours to keep, whether or not we work together after",
+      "Up to 40 hours of hands-on fixes on the problems we agree matter most",
+      "Changes built in a sandbox, tested with your team, then deployed",
+      "A written 90-day roadmap for everything the sprint didn't cover",
     ],
   },
   {
@@ -20,7 +20,7 @@ export const companyPlans: Plan[] = [
     cadence: "per month · 60 hours",
     summary: "Admin and developer work in one person, for less than half the cost of a full-time hire.",
     points: [
-      "Works through the fix list, then your requests as they come",
+      "Works through the roadmap, then your requests as they come",
       "Weekly update of what was done and what's next",
       "Month to month, with 30 days' notice",
     ],
@@ -58,9 +58,9 @@ export const safeguards: { title: string; body: string }[] = [
 
 export const steps: { title: string; body: string }[] = [
   { title: "Free 20-minute call", body: "Tell me what's going wrong. I'll say honestly whether I can help." },
-  { title: "Access and invoice", body: "You set up a sandbox or a limited login and pay the fixed $750." },
-  { title: "Report in 5 days", body: "You get the written fix list and we walk through it together." },
-  { title: "Your call", body: "Fix it yourselves, or keep me on monthly to work through it." },
+  { title: "Agree the targets", body: "Within two days you get a short list of what I'll fix and what done looks like. Half the fee is due to start." },
+  { title: "Two weeks of fixes", body: "I work through the list in a sandbox, show you progress mid-sprint, then deploy what you approve." },
+  { title: "Handover and roadmap", body: "A walkthrough of every change, notes your admin can follow, and a 90-day plan. The other half is due at handover." },
 ];
 
 export const companyFaqs: { q: string; a: string }[] = [
@@ -70,7 +70,7 @@ export const companyFaqs: { q: string; a: string }[] = [
   },
   {
     q: "We're in the middle of an implementation that's gone sideways. Can you help?",
-    a: "Yes. The health check works the same on a half-built org. It tells you what's salvageable and what the partner still owes you.",
+    a: "Yes. A sprint on a half-built org gets the parts your team needs working first, and the roadmap shows what's salvageable and what the partner still owes you.",
   },
   {
     q: "Is it safe to give someone overseas access to our CRM?",
