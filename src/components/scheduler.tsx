@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 import { ArrowLeft, ArrowRight, CalendarCheck2, Clock, Loader2 } from "lucide-react";
 
@@ -21,11 +21,18 @@ const same = (a: DateParts | null, b: DateParts) => !!a && a.year === b.year && 
 
 type Step = "date" | "details" | "done";
 
+async function fetchSlots(parts: DateParts): Promise<string[]> {
+  const res = await fetch(`/api/availability?year=${parts.year}&month=${parts.month}&day=${parts.day}`);
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || "Couldn't load times.");
+  return data.slots;
+}
+
 export function Scheduler({ topics, defaultTopic }: { topics: { id: string; label: string }[]; defaultTopic?: string }) {
   const dates = useMemo(() => getBookableDates(), []);
-  const [selectedDate, setSelectedDate] = useState<DateParts | null>(null);
+  const [selectedDate, setSelectedDate] = useState<DateParts | null>(() => dates[0] ?? null);
   const [slots, setSlots] = useState<string[]>([]);
-  const [loadingSlots, setLoadingSlots] = useState(false);
+  const [loadingSlots, setLoadingSlots] = useState(dates.length > 0);
   const [slotsError, setSlotsError] = useState<string | null>(null);
   const [selectedSlot, setSelectedSlot] = useState<string | null>(null);
   const [step, setStep] = useState<Step>("date");
@@ -42,22 +49,36 @@ export function Scheduler({ topics, defaultTopic }: { topics: { id: string; labe
 
   const localTimezone = useMemo(() => Intl.DateTimeFormat().resolvedOptions().timeZone.replace(/_/g, " "), []);
 
-  async function pickDate(parts: DateParts) {
+  const timesRef = useRef<HTMLDivElement>(null);
+
+  // Ignores a slow response for a day the visitor has already moved away from.
+  const requestId = useRef(0);
+
+  function loadSlots(parts: DateParts) {
+    const id = ++requestId.current;
+    fetchSlots(parts)
+      .then((found) => id === requestId.current && setSlots(found))
+      .catch((err) => id === requestId.current && setSlotsError(err instanceof Error ? err.message : "Couldn't load times."))
+      .finally(() => id === requestId.current && setLoadingSlots(false));
+  }
+
+  function pickDate(parts: DateParts) {
     setSelectedDate(parts);
     setSelectedSlot(null);
     setLoadingSlots(true);
     setSlotsError(null);
-    try {
-      const res = await fetch(`/api/availability?year=${parts.year}&month=${parts.month}&day=${parts.day}`);
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Couldn't load times.");
-      setSlots(data.slots);
-    } catch (err) {
-      setSlotsError(err instanceof Error ? err.message : "Couldn't load times.");
-    } finally {
-      setLoadingSlots(false);
+    // On narrow screens the times sit below the days; bring them into view.
+    if (!window.matchMedia("(min-width: 768px)").matches) {
+      timesRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
     }
+    loadSlots(parts);
   }
+
+  // Open on the first bookable day so times are visible without a click.
+  useEffect(() => {
+    if (dates[0]) loadSlots(dates[0]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   async function submitBooking() {
     if (!selectedSlot) return;
@@ -109,10 +130,10 @@ export function Scheduler({ topics, defaultTopic }: { topics: { id: string; labe
       </ol>
 
       {step === "date" ? (
-        <div className="flex flex-col gap-8">
+        <div className="grid gap-6 md:grid-cols-[minmax(0,1fr)_9.5rem]">
           <div>
             <p className="mb-3 text-sm font-medium">Choose a day</p>
-            <div className="grid grid-cols-3 gap-2 sm:grid-cols-5">
+            <div className="grid grid-cols-4 gap-1.5 sm:grid-cols-5">
               {dates.map((d) => {
                 const active = same(selectedDate, d);
                 return (
@@ -121,15 +142,15 @@ export function Scheduler({ topics, defaultTopic }: { topics: { id: string; labe
                     type="button"
                     onClick={() => pickDate(d)}
                     aria-pressed={active}
+                    aria-label={fmtDay(d, { weekday: "long", month: "long", day: "numeric" })}
                     className={cn(
-                      "flex flex-col items-start rounded-md border px-3 py-2.5 text-left transition-colors",
+                      "flex flex-col items-start rounded-md border px-2 py-1.5 text-left transition-colors",
                       active ? "border-foreground bg-foreground text-background" : "border-rule bg-background hover:border-foreground/40",
                     )}
                   >
-                    <span className={cn("annot", active && "text-background/60")}>{fmtDay(d, { weekday: "short" })}</span>
-                    <span className="display text-2xl leading-tight">{fmtDay(d, { day: "numeric" })}</span>
-                    <span className={cn("text-xs", active ? "text-background/70" : "text-muted-foreground")}>
-                      {fmtDay(d, { month: "short" })}
+                    <span className={cn("text-xs", active ? "text-background/70" : "text-muted-foreground")}>{fmtDay(d, { weekday: "short" })}</span>
+                    <span className="whitespace-nowrap text-[13px] font-medium tabular-nums">
+                      {fmtDay(d, { day: "numeric" })} {fmtDay(d, { month: "short" })}
                     </span>
                   </button>
                 );
@@ -137,41 +158,37 @@ export function Scheduler({ topics, defaultTopic }: { topics: { id: string; labe
             </div>
           </div>
 
-          {selectedDate ? (
-            <div>
-              <p className="mb-3 flex flex-wrap items-baseline justify-between gap-2 text-sm font-medium">
-                Choose a time
-                <span className="annot flex items-center gap-1.5">
-                  <Clock className="size-3" aria-hidden /> {localTimezone}
-                </span>
+          <div ref={timesRef} className="scroll-mt-20">
+            <p className="mb-3 text-sm font-medium">Choose a time</p>
+            <p className="annot mb-2 flex items-center gap-1.5">
+              <Clock className="size-3" aria-hidden /> {localTimezone}
+            </p>
+            {!selectedDate || loadingSlots ? (
+              <p className="flex items-center gap-2 text-sm text-muted-foreground">
+                <Loader2 className="size-4 animate-spin" aria-hidden /> Checking the calendar…
               </p>
-              {loadingSlots ? (
-                <p className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <Loader2 className="size-4 animate-spin" aria-hidden /> Checking the calendar…
-                </p>
-              ) : slotsError ? (
-                <p className="text-sm text-destructive">{slotsError}</p>
-              ) : slots.length === 0 ? (
-                <p className="text-sm text-muted-foreground">No open times that day. Try another date.</p>
-              ) : (
-                <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
-                  {slots.map((iso) => (
-                    <button
-                      key={iso}
-                      type="button"
-                      onClick={() => {
-                        setSelectedSlot(iso);
-                        setStep("details");
-                      }}
-                      className="rounded-md border border-rule bg-background px-3 py-2.5 text-sm font-medium tabular-nums transition-colors hover:border-brand hover:text-brand"
-                    >
-                      {timeLabel(iso)}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-          ) : null}
+            ) : slotsError ? (
+              <p className="text-sm text-destructive">{slotsError}</p>
+            ) : slots.length === 0 ? (
+              <p className="text-sm text-muted-foreground">No open times that day. Try another date.</p>
+            ) : (
+              <div className="grid grid-cols-3 gap-1.5 md:max-h-64 md:grid-cols-1 md:overflow-y-auto md:pr-1">
+                {slots.map((iso) => (
+                  <button
+                    key={iso}
+                    type="button"
+                    onClick={() => {
+                      setSelectedSlot(iso);
+                      setStep("details");
+                    }}
+                    className="rounded-md border border-rule bg-background px-3 py-2 text-sm font-medium tabular-nums transition-colors hover:border-brand hover:text-brand"
+                  >
+                    {timeLabel(iso)}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       ) : null}
 
