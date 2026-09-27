@@ -8,16 +8,12 @@ import { Chapter } from "@/components/brief/chapter";
 import { CtaLink } from "@/components/brief/cta-link";
 import { Emphasis } from "@/components/brief/emphasis";
 import { CaseNoteCard } from "@/components/brief/case-note-card";
-import { PlanCard } from "@/components/brief/plan-card";
 import { ProductCard } from "@/components/brief/product-card";
-import { TermGrid } from "@/components/brief/term-grid";
 import { CtaBand } from "@/components/brief/cta-band";
 import { PostList } from "@/components/brief/post-list";
 import { experience } from "@/content/about";
 import { caseNotes } from "@/content/work";
 import { products } from "@/content/products";
-import { plans, terms } from "@/content/engagement";
-import { services } from "@/content/services";
 import { siteConfig } from "@/config/site";
 import { getSiteSettings } from "@/lib/site-settings";
 import { getAllPosts } from "@/lib/blog";
@@ -49,9 +45,6 @@ export default async function HomePage() {
             </p>
             <div className="mt-5 flex flex-wrap items-center gap-5">
               <CtaLink href="/contact">{settings.hero.ctaLabel}</CtaLink>
-              <Link href="#engagement" className="text-sm font-medium text-muted-foreground hover:text-foreground">
-                How it works
-              </Link>
               <Link href="/for-companies" className="text-sm font-medium text-muted-foreground hover:text-foreground">
                 Not a consultancy?
               </Link>
@@ -70,24 +63,6 @@ export default async function HomePage() {
           </div>
         </Container>
       </section>
-
-      <Chapter
-        id="engagement"
-        label="How it works"
-        title="Start with a pilot, then keep me on monthly"
-        intro="One partner at a time, so you get consistent hours and one developer who knows your clients' orgs."
-      >
-        <div className="grid gap-3 md:grid-cols-2">
-          {plans.map((plan) => (
-            <PlanCard key={plan.name} plan={plan} />
-          ))}
-        </div>
-        <TermGrid items={terms} className="mt-6" />
-      </Chapter>
-
-      <Chapter label="What I take on" title="The work partners hand me">
-        <TermGrid items={services} />
-      </Chapter>
 
       <Chapter label="Experience" title="Where I’ve worked">
         <ol className="flex flex-col gap-6">
