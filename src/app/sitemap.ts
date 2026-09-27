@@ -2,11 +2,13 @@ import type { MetadataRoute } from "next";
 
 import { siteConfig } from "@/config/site";
 import { getAllPosts } from "@/lib/blog";
+import { packages } from "@/content/packages";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const routes = [
     "",
     "/for-companies",
+    ...packages.map((p) => `/packages/${p.slug}`),
     "/work",
     "/blog",
     "/about",

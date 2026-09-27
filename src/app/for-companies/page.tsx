@@ -11,6 +11,7 @@ import { PlanCard } from "@/components/brief/plan-card";
 import { TermGrid } from "@/components/brief/term-grid";
 import { siteConfig } from "@/config/site";
 import { checkAreas, companyFaqs, companyPlans, safeguards, signs, steps } from "@/content/companies";
+import { packages } from "@/content/packages";
 
 export const metadata: Metadata = {
   title: "For companies",
@@ -58,6 +59,27 @@ export default function ForCompaniesPage() {
             <PlanCard key={plan.name} plan={plan} />
           ))}
         </div>
+      </Chapter>
+
+      <Chapter label="Packages" title="Know exactly what you need?" intro="Fixed-scope projects with a starting price and a written quote before you commit.">
+        <ul className="grid gap-3 md:grid-cols-2">
+          {packages.map((pkg) => (
+            <li key={pkg.slug}>
+              <Link
+                href={`/packages/${pkg.slug}`}
+                className="group flex h-full flex-col rounded-lg border border-rule p-4 transition-colors hover:border-foreground/40"
+              >
+                <p className="annot">From {pkg.price} · {pkg.timeline}</p>
+                <p className="mt-2 font-medium group-hover:text-brand">{pkg.name}</p>
+                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{pkg.outcomes[0]}.</p>
+                <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium">
+                  See the package
+                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </Chapter>
 
       <Chapter label="The health check" title="What I look at">
