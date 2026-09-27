@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: `Get in touch with .`,
+  description: `Get in touch with ${siteConfig.name}.`,
   alternates: { canonical: "/contact" },
 };
 
