@@ -24,7 +24,7 @@ export const products: Product[] = [
     name: "Salesforce Daily Quiz",
     tagline: "A daily Salesforce quiz, right in Chrome",
     summary:
-      "A Chrome extension with a daily five-question Salesforce challenge, 200 scenario MCQs for interview prep, and an optional focus timer that pauses social media until you pass a quiz. Everything stays in your browser.",
+      "Five Salesforce questions a day, the same for everyone. Keep a streak, practise 200 more, and optionally pause social media until you pass a quiz.",
     href: "/products/salesforce-daily-quiz",
     tags: ["Chrome extension", "Manifest V3", "Local-only"],
   },
