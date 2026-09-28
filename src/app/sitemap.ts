@@ -12,6 +12,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/work",
     "/blog",
     "/about",
+    "/products/focusquest",
+    "/products/focusquest/privacy",
     "/contact",
     "/privacy",
     "/terms",
