@@ -11,10 +11,10 @@ import { TermGrid } from "@/components/brief/term-grid";
 import { focusquest } from "@/content/focusquest";
 
 export const metadata: Metadata = {
-  title: "FocusQuest: Earn your scroll",
+  title: "Salesforce Daily Quiz: a daily Salesforce interview quiz for Chrome",
   description:
-    "FocusQuest pauses YouTube and social media when your time is up and unlocks more time when you pass a quiz. 200 Salesforce developer interview questions built in, or import your own. Everything stays in your browser.",
-  alternates: { canonical: "/products/focusquest" },
+    "A free Chrome extension with a daily five-question Salesforce challenge, 200 scenario MCQs for Apex, LWC, Flow and admin interview prep, and an optional focus timer. Everything stays in your browser.",
+  alternates: { canonical: "/products/salesforce-daily-quiz" },
 };
 
 function Bullets({ items }: { items: readonly string[] }) {
@@ -33,7 +33,7 @@ function Bullets({ items }: { items: readonly string[] }) {
 const downloadClassName =
   "group inline-flex h-10 shrink-0 items-center justify-center gap-2 rounded-full bg-foreground px-5 text-sm font-medium text-background transition-colors hover:bg-foreground/85 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand";
 
-export default function FocusQuestPage() {
+export default function SalesforceDailyQuizPage() {
   return (
     <>
       <PageHero
@@ -57,11 +57,11 @@ export default function FocusQuestPage() {
         }
       />
 
-      <Chapter label="What it does" title="A time limit you pay back in answers">
+      <Chapter label="What it does" title="A daily habit for Salesforce interview prep">
         <div className="grid gap-8 sm:grid-cols-[1fr_16rem]">
           <Bullets items={focusquest.what} />
           <div>
-            <p className="mb-3 font-medium">Sites it tracks</p>
+            <p className="mb-3 font-medium">Focus timer sites (optional)</p>
             <ul className="flex flex-wrap gap-1.5">
               {focusquest.sites.map((site) => (
                 <li key={site} className="rounded-full bg-paper px-2.5 py-1 text-xs text-muted-foreground">
@@ -147,7 +147,7 @@ export default function FocusQuestPage() {
             </ol>
             <div className="mt-5">
               <a href={focusquest.downloadHref} download className={downloadClassName}>
-                Download focusquest.zip
+                Download salesforce-daily-quiz.zip
                 <ArrowDown aria-hidden className="size-4 transition-transform duration-300 group-hover:translate-y-0.5 motion-reduce:transition-none" />
               </a>
             </div>
@@ -167,7 +167,7 @@ export default function FocusQuestPage() {
         <p className="annot mt-6">Built with {focusquest.builtWith.join(" · ")}</p>
       </Chapter>
 
-      <CtaBand lead="Questions or feedback on FocusQuest?" />
+      <CtaBand lead="Questions or feedback on Salesforce Daily Quiz?" />
     </>
   );
 }

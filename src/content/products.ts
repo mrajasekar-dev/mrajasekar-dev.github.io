@@ -21,11 +21,11 @@ export const products: Product[] = [
     tags: ["Next.js", "Local-first", "SaaS"],
   },
   {
-    name: "FocusQuest",
-    tagline: "Earn your scroll",
+    name: "Salesforce Daily Quiz",
+    tagline: "A daily Salesforce quiz, right in Chrome",
     summary:
-      "A Chrome extension that pauses YouTube and social media after your time is up and asks for a 70% quiz score before it gives you more. Ships with 200 scenario-based Salesforce developer questions, or import your own. Everything stays in your browser.",
-    href: "/products/focusquest",
+      "A Chrome extension with a daily five-question Salesforce challenge, 200 scenario MCQs for interview prep, and an optional focus timer that pauses social media until you pass a quiz. Everything stays in your browser.",
+    href: "/products/salesforce-daily-quiz",
     tags: ["Chrome extension", "Manifest V3", "Local-only"],
   },
 ];

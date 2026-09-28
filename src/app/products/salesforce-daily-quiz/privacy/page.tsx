@@ -7,25 +7,25 @@ import { focusquestPrivacy } from "@/content/focusquest";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "FocusQuest privacy policy",
-  description: "How the FocusQuest Chrome extension handles your data: everything stays on your device, and nothing is collected or sent anywhere.",
-  alternates: { canonical: "/products/focusquest/privacy" },
+  title: "Salesforce Daily Quiz privacy policy",
+  description: "How the Salesforce Daily Quiz Chrome extension handles your data: everything stays on your device, and nothing is collected or sent anywhere.",
+  alternates: { canonical: "/products/salesforce-daily-quiz/privacy" },
   robots: { index: false, follow: true },
 };
 
-export default function FocusQuestPrivacyPage() {
+export default function SalesforceDailyQuizPrivacyPage() {
   return (
     <>
       <PageHero
-        label="FocusQuest · Legal"
+        label="Salesforce Daily Quiz · Legal"
         title="Privacy policy"
-        intro="Short version: FocusQuest keeps everything on your device. It has no accounts, no servers and no analytics, and it never sends your data anywhere."
+        intro="Short version: Salesforce Daily Quiz keeps everything on your device. It has no accounts, no servers and no analytics, and it never sends your data anywhere."
       />
       <Container className="max-w-3xl pb-7">
         <div className="flex flex-col gap-5 leading-relaxed text-foreground/85">
           <p className="annot">Effective {focusquestPrivacy.effectiveDate}</p>
           <p>
-            This policy covers the FocusQuest browser extension for Google Chrome (&ldquo;the extension&rdquo;), built
+            This policy covers the Salesforce Daily Quiz browser extension for Google Chrome (&ldquo;the extension&rdquo;), built
             and maintained by {siteConfig.name}. It explains what the extension handles, where that information lives,
             and how to remove it.
           </p>
@@ -92,8 +92,8 @@ export default function FocusQuestPrivacyPage() {
             .
           </p>
           <p>
-            <Link href="/products/focusquest" className="text-brand underline underline-offset-4">
-              Back to FocusQuest
+            <Link href="/products/salesforce-daily-quiz" className="text-brand underline underline-offset-4">
+              Back to Salesforce Daily Quiz
             </Link>
           </p>
         </div>
