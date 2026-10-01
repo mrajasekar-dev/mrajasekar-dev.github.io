@@ -14,18 +14,16 @@ export type Product = {
 export const products: Product[] = [
   {
     name: "Rolo",
-    tagline: "Turn your followers into a pipeline",
-    summary:
-      "Merges LinkedIn, Instagram, X, newsletter, email and event exports into one list of real people, scores who’s warm, and adds a lightweight CRM: inbox, pipeline, follow-ups and lead-capture pages. No scraping; the data never leaves your own exports.",
-    href: "https://rolo-ashy.vercel.app",
-    tags: ["Next.js", "Local-first", "SaaS"],
+    tagline: "Web app",
+    summary: "Turn your followers into a pipeline. One list of real people, and who's warm.",
+    href: "/products/rolo",
+    tags: ["SaaS"],
   },
   {
     name: "Salesforce Daily Quiz",
-    tagline: "A daily Salesforce quiz, right in Chrome",
-    summary:
-      "Five Salesforce questions a day, the same for everyone. Keep a streak, practise 200 more, and optionally pause social media until you pass a quiz.",
+    tagline: "Chrome extension",
+    summary: "A daily Salesforce quiz. Play the ranked challenge or practise privately.",
     href: "/products/salesforce-daily-quiz",
-    tags: ["Chrome extension", "Manifest V3", "Local-only"],
+    tags: ["Free"],
   },
 ];

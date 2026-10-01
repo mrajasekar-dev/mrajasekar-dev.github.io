@@ -12,9 +12,6 @@ import { cn } from "@/lib/utils";
 
 const initialState: ContactFormState = { status: "idle" };
 
-const selectClass =
-  "h-11 w-full rounded-md border border-input bg-background px-3 text-sm outline-none transition-colors focus-visible:border-brand focus-visible:ring-3 focus-visible:ring-brand/20";
-
 export const fieldClass = "h-11 bg-background focus-visible:border-brand focus-visible:ring-brand/20";
 
 function Field({ id, label, hint, error, children }: { id: string; label: string; hint?: string; error?: string; children: React.ReactNode }) {
@@ -48,7 +45,7 @@ function SubmitButton() {
   );
 }
 
-export function ContactForm({ topics, defaultTopic }: { topics: { id: string; label: string }[]; defaultTopic?: string }) {
+export function ContactForm() {
   const [state, formAction] = useActionState(submitContactForm, initialState);
   const err = state.fieldErrors ?? {};
 
@@ -73,21 +70,8 @@ export function ContactForm({ topics, defaultTopic }: { topics: { id: string; la
         <Field id="name" label="Name" error={err.name}>
           <Input id="name" name="name" autoComplete="name" required aria-invalid={!!err.name} className={fieldClass} />
         </Field>
-        <Field id="email" label="Work email" error={err.email}>
+        <Field id="email" label="Email" error={err.email}>
           <Input id="email" name="email" type="email" autoComplete="email" required aria-invalid={!!err.email} className={fieldClass} />
-        </Field>
-        <Field id="company" label="Company" error={err.company}>
-          <Input id="company" name="company" autoComplete="organization" required aria-invalid={!!err.company} className={fieldClass} />
-        </Field>
-        <Field id="topic" label="Topic">
-          <select id="topic" name="topic" defaultValue={topics.find((t) => t.id === defaultTopic)?.label ?? ""} className={selectClass}>
-            <option value="">Choose one (optional)</option>
-            {topics.map((t) => (
-              <option key={t.id} value={t.label}>
-                {t.label}
-              </option>
-            ))}
-          </select>
         </Field>
       </div>
 
@@ -98,7 +82,7 @@ export function ContactForm({ topics, defaultTopic }: { topics: { id: string; la
           rows={5}
           required
           aria-invalid={!!err.message}
-          placeholder="A few sentences about the project."
+          placeholder="What would you like to talk about?"
           className="bg-background focus-visible:border-brand focus-visible:ring-brand/20"
         />
       </Field>

@@ -17,7 +17,7 @@ export const caseNotes: CaseNote[] = [
     title: "Event-driven order notifications",
     client: "Indian EV startup · Salesforce",
     summary:
-      "SMS, WhatsApp and push notifications on Platform Events and Custom Metadata templates, replacing blocking callouts with an auditable, replayable async design.",
+      "SMS, WhatsApp and push notifications on Platform Events.",
     tags: ["Platform Events", "Integration"],
   },
   {
@@ -25,14 +25,14 @@ export const caseNotes: CaseNote[] = [
     title: "Two-way SAP–Salesforce sync",
     client: "Automotive · Salesforce",
     summary:
-      "A custom Apex REST layer plus a shared service layer for the mobile app and website; one business-payload endpoint replaced per-object REST coupling.",
+      "A custom Apex REST layer connecting SAP, the mobile app and the website.",
     tags: ["Apex REST", "SAP"],
   },
   {
     slug: "test-coverage",
     title: "Legacy codebase clean-up",
     client: "US non-profit · Salesforce",
-    summary: "Refactored legacy Apex, cleared technical debt and led complex data migrations.",
+    summary: "Cleaned up legacy Apex and led data migrations.",
     tags: ["Apex", "Data migration"],
     metric: { figure: "50% → 85%", label: "Apex test coverage" },
   },
@@ -40,9 +40,8 @@ export const caseNotes: CaseNote[] = [
     slug: "rolo",
     title: "Rolo: followers into a pipeline",
     client: "My product · SaaS",
-    summary:
-      "Merges official exports from 18 platforms into one person per human, scores who's warm, and adds a lightweight CRM with inbox, pipeline, follow-ups and lead-capture pages. Local-first, so 14k people load in under 100 ms.",
-    tags: ["Next.js", "Local-first", "Identity merge"],
-    href: "https://rolo-ashy.vercel.app",
+    summary: "One list of real people from your social and email exports, with a simple pipeline.",
+    tags: ["Next.js", "SaaS"],
+    href: "/products/rolo",
   },
 ];

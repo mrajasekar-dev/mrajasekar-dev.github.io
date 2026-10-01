@@ -1,7 +1,7 @@
 // Sourced from the founder's CV (Sept 2026). Keep it factual and short.
 
 export const intro = {
-  body: "I'm Rajasekar (most people call me Raj), a Senior Salesforce Developer with 5+ years of solution design and delivery in integration-heavy enterprise environments.",
+  body: "Senior Salesforce Developer with 5+ years building integrations for enterprise clients.",
 } as const;
 
 type ExperiencePhoto = { src: string; alt: string; width: number; height: number };
@@ -22,11 +22,11 @@ export const experience: ExperienceEntry[] = [
     org: "GoKarya",
     period: "Feb 2026 – Present",
     location: "Bengaluru, India",
-    summary: "Boutique Salesforce consultancy, working directly with US enterprise clients.",
+    summary: "Salesforce consultancy for US enterprise clients.",
     bullets: [
-      "Clinical trial management on Salesforce for a US medical device company.",
-      "Technical advisor to a US real estate firm's steering committee, from discovery through go-live.",
-      "Designed a real-time analytics dashboard using Lightning Message Service, with scheduled executive digests.",
+      "Clinical trial management for a US medical device company.",
+      "Technical advisor to a US real estate firm, from discovery to go-live.",
+      "Real-time analytics dashboard with scheduled executive digests.",
     ],
   },
   {
@@ -34,7 +34,7 @@ export const experience: ExperienceEntry[] = [
     org: "Salesforce",
     period: "Jun 2021 – Feb 2026",
     location: "Bengaluru, India",
-    summary: "Delivery for enterprise customers across automotive, healthcare and non-profit.",
+    summary: "Enterprise delivery across automotive, healthcare and non-profit.",
     photo: {
       src: "/rajasekar-salesforce.jpg",
       alt: "Rajasekar M standing at the Salesforce Bengaluru office",
@@ -42,10 +42,10 @@ export const experience: ExperienceEntry[] = [
       height: 1800,
     },
     bullets: [
-      "Event-driven order notifications (SMS, WhatsApp, push) on Platform Events for an Indian EV startup.",
-      "Two-way SAP–Salesforce sync through a custom Apex REST layer.",
-      "Health Cloud data architecture for US health insurers and a national non-profit.",
-      "Raised Apex test coverage from 50% to 85% on a legacy non-profit codebase.",
+      "Order notifications (SMS, WhatsApp, push) for an EV startup.",
+      "Two-way SAP–Salesforce sync.",
+      "Health Cloud architecture for US insurers and a non-profit.",
+      "Raised Apex test coverage from 50% to 85%.",
     ],
   },
 ];

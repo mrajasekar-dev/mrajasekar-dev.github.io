@@ -4,7 +4,7 @@ import { Container } from "@/components/brief/container";
 import { siteConfig } from "@/config/site";
 
 /** A quiet contact line at the end of a page. */
-export function CtaBand({ lead = "Have overflow work?" }: { lead?: string }) {
+export function CtaBand({ lead = "Say hello." }: { lead?: string }) {
   return (
     <section>
       <Container>
@@ -19,9 +19,9 @@ export function CtaBand({ lead = "Have overflow work?" }: { lead?: string }) {
             <a href={siteConfig.linkedin} target="_blank" rel="noreferrer noopener" className="underline decoration-rule underline-offset-[6px] hover:text-brand hover:decoration-brand">
               LinkedIn
             </a>
-            , or by{" "}
+            , or{" "}
             <Link href="/contact" className="underline decoration-rule underline-offset-[6px] hover:text-brand hover:decoration-brand">
-              booking an intro call
+              book a call
             </Link>
             .
           </p>

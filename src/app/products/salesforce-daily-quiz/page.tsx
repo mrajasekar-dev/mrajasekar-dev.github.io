@@ -10,9 +10,9 @@ import { PageHero } from "@/components/brief/page-hero";
 import { focusquest } from "@/content/focusquest";
 
 export const metadata: Metadata = {
-  title: "Salesforce Daily Quiz: a daily Salesforce interview quiz for Chrome",
+  title: "Salesforce Daily Quiz: a daily Salesforce quiz for Chrome",
   description:
-    "A free Chrome extension with a daily five-question Salesforce challenge, 200 practice questions for interview prep, and an optional focus timer. Everything stays in your browser.",
+    "A free Chrome extension and web app with a daily five-question Salesforce challenge. Play the ranked daily, practise privately, or switch on the optional focus timer. Anonymous, no account.",
   alternates: { canonical: "/products/salesforce-daily-quiz" },
 };
 
@@ -33,6 +33,9 @@ export default function SalesforceDailyQuizPage() {
               <a href={focusquest.downloadHref} download className={downloadClassName}>
                 Download
                 <ArrowDown aria-hidden className="size-4 transition-transform duration-300 group-hover:translate-y-0.5 motion-reduce:transition-none" />
+              </a>
+              <a href={focusquest.webHref} target="_blank" rel="noreferrer noopener" className="text-sm font-medium hover:text-brand">
+                Play on the web
               </a>
               <p className="annot">{focusquest.status}</p>
             </div>
@@ -72,7 +75,7 @@ export default function SalesforceDailyQuizPage() {
           ))}
         </ol>
         <p className="mt-6 text-sm text-muted-foreground">
-          No account, no tracking, nothing leaves your browser.{" "}
+          No account. Join with a name, or skip and get a random one.{" "}
           <Link href={focusquest.privacyHref} className="group inline-flex items-center gap-1 font-medium text-foreground hover:text-brand">
             Privacy policy
             <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden />

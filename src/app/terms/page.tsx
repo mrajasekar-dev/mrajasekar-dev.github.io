@@ -18,13 +18,8 @@ export default function TermsPage() {
       <Container className="max-w-3xl pb-7">
         <div className="flex flex-col gap-5 leading-relaxed text-foreground/85">
           <p>
-            This website describes {siteConfig.name}&rsquo;s Salesforce consulting practice and provides a way to get in
-            touch. Nothing on it is a binding offer or agreement.
-          </p>
-          <p>
-            The engagement principles described on this site reflect how I work. Each engagement&rsquo;s scope,
-            timeline, price and terms are agreed in writing, directly between you and {siteConfig.name}, before any work
-            begins.
+            This website shows {siteConfig.name}&rsquo;s work and provides a way to get in touch. Nothing on it is an
+            offer or agreement.
           </p>
           <p>
             Questions:{" "}

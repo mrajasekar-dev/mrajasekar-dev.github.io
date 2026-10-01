@@ -46,8 +46,8 @@ export type PostFormValues = z.infer<typeof postSchema>;
 
 export const contactFormSchema = z.object({
   name: z.string().trim().min(2, "Enter your name."),
-  email: z.string().trim().email("Enter a valid work email."),
-  company: z.string().trim().min(1, "Enter your company."),
+  email: z.string().trim().email("Enter a valid email."),
+  company: z.string().trim().optional(),
   message: z.string().trim().min(10, "Give a little more detail — a sentence or two is fine."),
   topic: z.string().trim().max(80).optional(),
   budget: z.string().trim().max(40).optional(),
@@ -60,8 +60,8 @@ export type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 export const bookingFormSchema = z.object({
   name: z.string().trim().min(2, "Enter your name."),
-  email: z.string().trim().email("Enter a valid work email."),
-  company: z.string().trim().min(1, "Enter your company."),
+  email: z.string().trim().email("Enter a valid email."),
+  company: z.string().trim().optional(),
   notes: z.string().trim().max(1000).optional(),
   topic: z.string().trim().max(80).optional(),
   slot: z.string().trim().refine((v) => !Number.isNaN(Date.parse(v)), "Invalid time slot."),

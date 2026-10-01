@@ -95,7 +95,7 @@ export default async function InboxPage({ searchParams }: PageProps<"/admin/inbo
                   </span>
                   <div className="min-w-0">
                     <p className="font-medium">
-                      {i.name} <span className="font-normal text-muted-foreground">· {i.company}</span>
+                      {i.name}{i.company ? <span className="font-normal text-muted-foreground"> · {i.company}</span> : null}
                     </p>
                     <a href={`mailto:${i.email}`} className="text-sm text-muted-foreground hover:text-brand">
                       {i.email}

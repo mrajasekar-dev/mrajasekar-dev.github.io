@@ -5,13 +5,11 @@ import { PageHero } from "@/components/brief/page-hero";
 import { Container } from "@/components/brief/container";
 import { ContactForm } from "@/components/contact-form";
 import { Scheduler } from "@/components/scheduler";
-import { LinkedinIcon } from "@/components/icons";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { siteConfig } from "@/config/site";
 import { topicLabel, topics } from "@/content/topics";
-import { availabilityLabels, getSiteSettings } from "@/lib/site-settings";
 import { isCalendarConfigured } from "@/lib/google-calendar";
-import { cn } from "@/lib/utils";
+import { LinkedinIcon } from "@/components/icons";
+import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -22,29 +20,21 @@ export const metadata: Metadata = {
 export default async function ContactPage({ searchParams }: PageProps<"/contact">) {
   const { topic } = await searchParams;
   const topicId = typeof topic === "string" && topicLabel(topic) ? topic : undefined;
-  const { availability } = await getSiteSettings();
   const calendarReady = isCalendarConfigured();
 
   return (
     <>
-      <PageHero label="Contact" title="Contact" intro={<>Email me at <a href={`mailto:${siteConfig.email}`} className="text-foreground underline underline-offset-4 hover:text-brand">{siteConfig.email}</a>, or use the form below.</>} />
+      <PageHero label="Contact" title="Contact" intro={<>Email me at <a href={`mailto:${siteConfig.email}`} className="text-foreground underline underline-offset-4 hover:text-brand">{siteConfig.email}</a>, find me on LinkedIn, book a call, or send a message below.</>} />
 
       <section>
         <Container className="grid gap-8 pb-7 lg:grid-cols-12">
-          <aside className="flex flex-col gap-4 text-sm lg:col-span-4">
-            <p className="flex items-center gap-2 font-medium">
-              <span className={cn("size-2 rounded-full", availability.status === "open" ? "bg-ok" : availability.status === "limited" ? "bg-amber-500" : "bg-muted-foreground")} />
-              {availabilityLabels[availability.status]}
-            </p>
-            {availability.note ? <p className="text-muted-foreground">{availability.note}</p> : null}
-            <div className="flex flex-col gap-2 border-t border-rule pt-4">
-              <a href={`mailto:${siteConfig.email}`} className="inline-flex items-center gap-2 hover:text-brand">
-                <Mail className="size-4" aria-hidden /> {siteConfig.email}
-              </a>
-              <a href={siteConfig.linkedin} target="_blank" rel="noreferrer noopener" className="inline-flex items-center gap-2 hover:text-brand">
-                <LinkedinIcon className="size-4" /> LinkedIn
-              </a>
-            </div>
+          <aside className="flex flex-col gap-2 text-sm lg:col-span-4">
+            <a href={`mailto:${siteConfig.email}`} className="inline-flex items-center gap-2 hover:text-brand">
+              <Mail className="size-4" aria-hidden /> {siteConfig.email}
+            </a>
+            <a href={siteConfig.linkedin} target="_blank" rel="noreferrer noopener" className="inline-flex items-center gap-2 hover:text-brand">
+              <LinkedinIcon className="size-4" /> LinkedIn
+            </a>
           </aside>
 
           <div className="lg:col-span-8">
@@ -60,7 +50,7 @@ export default async function ContactPage({ searchParams }: PageProps<"/contact"
                   <Scheduler topics={topics} defaultTopic={topicId} />
                 </TabsContent>
                 <TabsContent value="message" className="p-5 sm:p-8">
-                  <ContactForm topics={topics} defaultTopic={topicId} />
+                  <ContactForm />
                 </TabsContent>
               </Tabs>
             </div>

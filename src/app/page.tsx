@@ -10,13 +10,11 @@ import { Emphasis } from "@/components/brief/emphasis";
 import { CaseNoteCard } from "@/components/brief/case-note-card";
 import { ProductCard } from "@/components/brief/product-card";
 import { CtaBand } from "@/components/brief/cta-band";
-import { PostList } from "@/components/brief/post-list";
 import { experience } from "@/content/about";
 import { caseNotes } from "@/content/work";
 import { products } from "@/content/products";
 import { siteConfig } from "@/config/site";
 import { getSiteSettings } from "@/lib/site-settings";
-import { getAllPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
   title: { absolute: `${siteConfig.name} — ${siteConfig.title}` },
@@ -25,7 +23,7 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
-  const [settings, posts] = await Promise.all([getSiteSettings(), getAllPosts().catch(() => [])]);
+  const settings = await getSiteSettings();
 
   return (
     <>
@@ -39,15 +37,14 @@ export default async function HomePage() {
               <Emphasis text={settings.hero.tagline} />
             </h1>
             <p className="mt-3 max-w-xl text-[15px] leading-relaxed sm:text-base text-muted-foreground">
-              When your backlog outgrows your bench, I join your delivery team as a white-label senior developer. Your
-              tools, your standards, your client relationship. Ex-Salesforce Professional Services, 7x certified,
-              strongest in integrations, Apex and LWC.
+              Ex-Salesforce, 7x certified, strongest in integrations, Apex and LWC. Here is my work, the things I
+              build, and how to reach me.
             </p>
             <div className="mt-5 flex flex-wrap items-center gap-5">
               <CtaLink href="/contact">{settings.hero.ctaLabel}</CtaLink>
-              <Link href="/for-companies" className="text-sm font-medium text-muted-foreground hover:text-foreground">
-                Not a consultancy?
-              </Link>
+              <a href={siteConfig.linkedin} target="_blank" rel="noreferrer noopener" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+                LinkedIn
+              </a>
             </div>
           </div>
           <div className="w-[180px] shrink-0 lg:w-[190px]">
@@ -64,7 +61,7 @@ export default async function HomePage() {
         </Container>
       </section>
 
-      <Chapter label="Experience" title="Where I’ve worked">
+      <Chapter label="Experience" title="Experience">
         <ol className="flex flex-col gap-6">
           {experience.map((job) => (
             <li key={job.org} className="grid gap-1.5 sm:grid-cols-[12rem_1fr] sm:gap-8">
@@ -76,7 +73,7 @@ export default async function HomePage() {
                 <p className="font-medium">{job.role}</p>
                 <p className="text-sm text-muted-foreground">{job.summary}</p>
                 <ul className="mt-2 flex flex-col gap-1 text-sm leading-relaxed text-foreground/80">
-                  {job.bullets.map((b) => (
+                  {job.bullets.slice(0, 2).map((b) => (
                     <li key={b} className="flex gap-3">
                       <span aria-hidden className="mt-2 size-1 shrink-0 rounded-full bg-brand" />
                       {b}
@@ -89,7 +86,7 @@ export default async function HomePage() {
         </ol>
       </Chapter>
 
-      <Chapter label="Work" title="Recent projects">
+      <Chapter label="Work" title="Projects">
         <div className="grid gap-3 md:grid-cols-3">
           {caseNotes.slice(0, 3).map((note) => (
             <CaseNoteCard key={note.slug} note={note} />
@@ -101,7 +98,7 @@ export default async function HomePage() {
         </Link>
       </Chapter>
 
-      <Chapter id="products" label="Products" title="Things I’ve built">
+      <Chapter id="products" label="Products" title="Products">
         <div className="grid gap-3 md:grid-cols-2">
           {products.map((product) => (
             <ProductCard key={product.name} product={product} />
@@ -109,11 +106,6 @@ export default async function HomePage() {
         </div>
       </Chapter>
 
-      {posts.length ? (
-        <Chapter label="Writing" title="Recent posts">
-          <PostList posts={posts.slice(0, 3)} />
-        </Chapter>
-      ) : null}
 
       <CtaBand />
     </>

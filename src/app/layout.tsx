@@ -7,6 +7,7 @@ import { ThemeProvider } from "next-themes";
 
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
+import { BackLink } from "@/components/back-link";
 import { Footer } from "@/components/footer";
 import { Toaster } from "@/components/ui/sonner";
 import { siteConfig } from "@/config/site";
@@ -69,16 +70,6 @@ const jsonLd = [
   },
   {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    name: fullTitle,
-    description: siteConfig.description,
-    url: siteConfig.url,
-    email: siteConfig.email,
-    areaServed: "Worldwide",
-    founder: { "@type": "Person", name: siteConfig.name },
-  },
-  {
-    "@context": "https://schema.org",
     "@type": "WebSite",
     name: siteConfig.name,
     url: siteConfig.url,
@@ -113,6 +104,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <Navbar />
           <main id="main" className="flex-1">
+            <BackLink />
             {children}
           </main>
           <Footer />

@@ -1,11 +1,9 @@
-import { packages } from "@/content/packages";
-import { services } from "@/content/services";
-
-/** Options for "What's it about?" on the contact forms. */
+/** Options for "What's it about?" on the booking form. */
 export const topics: { id: string; label: string }[] = [
-  ...services.map((s) => ({ id: s.title.toLowerCase().replace(/[^a-z0-9]+/g, "-"), label: s.title })),
-  { id: "fix-sprint", label: "Salesforce Fix Sprint" },
-  ...packages.map((p) => ({ id: p.slug, label: p.short })),
+  { id: "salesforce-work", label: "Salesforce work" },
+  { id: "collaboration", label: "Collaboration" },
+  { id: "salesforce-daily-quiz", label: "Salesforce Daily Quiz" },
+  { id: "rolo", label: "Rolo" },
   { id: "other", label: "Something else" },
 ];
 

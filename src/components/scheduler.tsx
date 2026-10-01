@@ -224,8 +224,8 @@ export function Scheduler({ topics, defaultTopic }: { topics: { id: string; labe
               <Input id="booking-email" type="email" required autoComplete="email" value={fields.email} onChange={set("email")} className={fieldClass} />
             </div>
             <div className="flex flex-col gap-1.5">
-              <Label htmlFor="booking-company">Company</Label>
-              <Input id="booking-company" required autoComplete="organization" value={fields.company} onChange={set("company")} className={fieldClass} />
+              <Label htmlFor="booking-company">Company (optional)</Label>
+              <Input id="booking-company" autoComplete="organization" value={fields.company} onChange={set("company")} className={fieldClass} />
             </div>
             <div className="flex flex-col gap-1.5">
               <Label htmlFor="booking-topic">Topic</Label>

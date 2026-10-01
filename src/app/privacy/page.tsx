@@ -18,9 +18,7 @@ export default function PrivacyPage() {
       <Container className="max-w-3xl pb-7">
         <div className="flex flex-col gap-5 leading-relaxed text-foreground/85">
           <p>
-            <strong>What&rsquo;s collected.</strong> When you send a message or book a call, I receive your name, work
-            email, company, and whatever you choose to write. Bookings also create a Google Calendar event with a Meet
-            link. Submissions are stored privately on Vercel so I can reply and keep track of the conversation.
+            <strong>What&rsquo;s collected.</strong> When you send a message or book a call, I receive your name, email, optionally your company, and whatever you choose to write. Bookings also create a Google Calendar event with a Meet link. Submissions are stored privately on Vercel so I can reply.
           </p>
           <p>
             <strong>Analytics.</strong> Aggregate, anonymous traffic and performance metrics (page views, referrers,

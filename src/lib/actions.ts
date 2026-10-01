@@ -24,7 +24,7 @@ export async function submitContactForm(
   const raw = {
     name: formData.get("name"),
     email: formData.get("email"),
-    company: formData.get("company"),
+    company: optional(formData.get("company")),
     message: formData.get("message"),
     topic: optional(formData.get("topic")),
     budget: optional(formData.get("budget")),

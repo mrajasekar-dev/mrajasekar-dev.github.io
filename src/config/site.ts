@@ -5,10 +5,10 @@
 export const siteConfig = {
   name: "Rajasekar M",
   shortName: "Raj",
-  title: "Salesforce Developer for Consulting Partners",
-  tagline: "Senior Salesforce capacity for consulting partners.",
+  title: "Salesforce Developer",
+  tagline: "Salesforce developer. Integrations, Apex and LWC.",
   description:
-    "Rajasekar M is a white-label senior Salesforce developer for consulting partners: ex-Salesforce Professional Services, 7x certified, strongest in integrations, Apex and LWC.",
+    "Rajasekar M is a Salesforce developer, ex-Salesforce Professional Services and 7x certified, strongest in integrations, Apex and LWC. Selected projects, products and ways to get in touch.",
   url: "https://rajasekar-m.vercel.app",
   email: "mrajasekar.dev@gmail.com",
   linkedin: "https://www.linkedin.com/in/mrajasekar-dev/",
@@ -20,30 +20,21 @@ export const siteConfig = {
   timezone: "Asia/Kolkata",
   serviceArea: "Based in Bengaluru, India. Working remotely.",
   keywords: [
-    "white-label Salesforce developer",
-    "Salesforce subcontractor for consulting partners",
-    "offshore Salesforce developer",
-    "Salesforce freelancer",
-    "independent Salesforce consultant",
-    "Salesforce consultant for growing businesses",
-    "Salesforce implementation consultant",
-    "Salesforce org cleanup",
-    "Salesforce integration consultant",
+    "Salesforce developer",
     "Salesforce Apex developer",
     "Salesforce LWC developer",
-    "Agentforce consultant",
-    "Health Cloud consultant",
-    "remote Salesforce consultant",
+    "Salesforce integrations",
+    "Agentforce",
+    "Health Cloud",
   ],
 } as const;
 
 export const nav = [
-  { label: "For companies", href: "/for-companies" },
+  { label: "Home", href: "/" },
   { label: "Work", href: "/work" },
-  { label: "Writing", href: "/blog" },
+  { label: "Products", href: "/#products" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ] as const;
 
-export const primaryCta = { label: "Book an intro call", href: "/contact" } as const;
-export const secondaryCta = { label: "Connect on LinkedIn", href: siteConfig.linkedin } as const;
+export const primaryCta = { label: "Contact", href: "/contact" } as const;

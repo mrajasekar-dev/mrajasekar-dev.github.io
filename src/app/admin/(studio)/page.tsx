@@ -102,7 +102,7 @@ export default async function StudioOverview() {
                     </span>
                     <span className="min-w-0 flex-1">
                       <span className="block truncate text-sm font-medium">
-                        {i.name} <span className="font-normal text-muted-foreground">· {i.company}</span>
+                        {i.name}{i.company ? <span className="font-normal text-muted-foreground"> · {i.company}</span> : null}
                       </span>
                       <span className="block truncate text-xs text-muted-foreground">{i.topic ?? i.body}</span>
                     </span>

@@ -2,17 +2,18 @@
 
 export const focusquest = {
   name: "Salesforce Daily Quiz",
-  headline: "Five Salesforce questions a day. *Right in Chrome.*",
-  intro: "A daily challenge for Salesforce developers and admins, the same five questions for everyone. Keep a streak, practise 200 more, and optionally pause social media until you pass a quiz.",
-  status: "Chrome Web Store listing coming soon. Free, and everything stays in your browser.",
+  headline: "A daily Salesforce quiz. *Right in Chrome.*",
+  intro: "Five Salesforce questions a day, the same for everyone. Keep a streak and see where you rank, or practise privately. Free, anonymous, no account.",
+  status: "Free. Chrome Web Store listing coming soon.",
+  webHref: "https://play.sfdq.workers.dev",
   downloadHref: "/downloads/salesforce-daily-quiz.zip",
   privacyHref: "/products/salesforce-daily-quiz/privacy",
 
   screenshots: [
     { src: "/products/salesforce-daily-quiz/daily.png", alt: "The daily challenge start screen with the current streak", caption: "Daily challenge" },
     { src: "/products/salesforce-daily-quiz/quiz.png", alt: "A Salesforce scenario question with the explanation shown", caption: "Question" },
-    { src: "/products/salesforce-daily-quiz/results.png", alt: "Results with streak, week view and share grid", caption: "Results" },
-    { src: "/products/salesforce-daily-quiz/options.png", alt: "Settings overview", caption: "Settings" },
+    { src: "/products/salesforce-daily-quiz/results.png", alt: "Today's score with rank, time and streak", caption: "Result" },
+    { src: "/products/salesforce-daily-quiz/options.png", alt: "Practice settings", caption: "Practice settings" },
   ],
 
   install: [
@@ -23,7 +24,7 @@ export const focusquest = {
 } as const;
 
 export const focusquestPrivacy = {
-  effectiveDate: "28 September 2026",
+  effectiveDate: "30 September 2026",
   permissions: [
     {
       title: "storage",

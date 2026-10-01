@@ -10,7 +10,7 @@ import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "About",
-  description: `About ${siteConfig.name}, ex-Salesforce engineer and white-label Salesforce developer for consulting partners, based in Bengaluru.`,
+  description: `About ${siteConfig.name}, ex-Salesforce engineer and Salesforce developer based in Bengaluru.`,
   alternates: { canonical: "/about" },
 };
 
@@ -36,16 +36,11 @@ export default function AboutPage() {
         }
       />
 
-      <Chapter label="Background" title="A bit about me">
+      <Chapter label="Background" title="Background">
         <div className="grid gap-10 lg:grid-cols-2">
-          <div className="flex flex-col gap-5 text-lg leading-relaxed text-muted-foreground">
-            <p>
-              At Salesforce I delivered for enterprise customers in automotive, healthcare and the non-profit sector.
-            </p>
-            <p>
-              Since February 2026 I&rsquo;ve been at GoKarya, a boutique Salesforce consultancy, working with US clients.
-              I also take on one consulting partner at a time as a white-label developer, and I build small tools like Rolo, a lightweight CRM for solo sellers.
-            </p>
+          <div className="flex flex-col gap-4 text-base leading-relaxed text-muted-foreground">
+            <p>I spent almost five years at Salesforce delivering for enterprise customers. Since February 2026 I&rsquo;m at GoKarya, working with US clients.</p>
+            <p>On the side I build small tools like Rolo and the Salesforce Daily Quiz.</p>
           </div>
           <div className="grid grid-cols-2 gap-4">
             {salesforcePhoto ? (
@@ -70,7 +65,7 @@ export default function AboutPage() {
         </div>
       </Chapter>
 
-      <Chapter label="Credentials" title="Certifications & education">
+      <Chapter label="Credentials" title="Credentials">
         <div className="grid gap-10 lg:grid-cols-2">
           <div>
             <p className="font-medium">Certifications</p>
@@ -106,7 +101,7 @@ export default function AboutPage() {
         </div>
       </Chapter>
 
-      <Chapter label="Skills" title="Tools I use">
+      <Chapter label="Skills" title="Skills">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {skillGroups.map((group) => (
             <div key={group.label}>

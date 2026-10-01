@@ -52,7 +52,7 @@ export async function createBookingEvent(params: {
   end: Date;
   attendeeEmail: string;
   attendeeName: string;
-  company: string;
+  company?: string;
   notes: string;
 }) {
   const auth = getOAuthClient();
@@ -63,7 +63,7 @@ export async function createBookingEvent(params: {
     sendUpdates: "all",
     conferenceDataVersion: 1,
     requestBody: {
-      summary: `Salesforce conversation: ${params.attendeeName} (${params.company})`,
+      summary: `Salesforce conversation: ${params.attendeeName}${params.company ? ` (${params.company})` : ""}`,
       description: params.notes,
       start: { dateTime: params.start.toISOString() },
       end: { dateTime: params.end.toISOString() },

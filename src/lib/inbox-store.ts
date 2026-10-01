@@ -11,7 +11,7 @@ export type Inquiry = {
   createdAt: string;
   name: string;
   email: string;
-  company: string;
+  company?: string;
   /** Free text: the message, or booking notes. */
   body: string;
   /** Which situation the visitor picked, if they came through the triage. */

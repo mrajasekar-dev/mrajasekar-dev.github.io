@@ -30,7 +30,7 @@ export const defaultSiteSettings: SiteSettings = {
     dark: { background: "#0b0b0c", foreground: "#ededed", brand: "#93b0ff" },
   },
   hero: {
-    tagline: "Senior Salesforce capacity for *consulting partners.*",
+    tagline: "Salesforce developer. *Integrations, Apex and LWC.*",
     ctaLabel: primaryCta.label,
   },
   availability: {
