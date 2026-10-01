@@ -7,7 +7,6 @@ import { ContactForm } from "@/components/contact-form";
 import { Scheduler } from "@/components/scheduler";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { topicLabel, topics } from "@/content/topics";
-import { isCalendarConfigured } from "@/lib/google-calendar";
 import { LinkedinIcon } from "@/components/icons";
 import { siteConfig } from "@/config/site";
 
@@ -20,7 +19,6 @@ export const metadata: Metadata = {
 export default async function ContactPage({ searchParams }: PageProps<"/contact">) {
   const { topic } = await searchParams;
   const topicId = typeof topic === "string" && topicLabel(topic) ? topic : undefined;
-  const calendarReady = isCalendarConfigured();
 
   return (
     <>
@@ -39,7 +37,7 @@ export default async function ContactPage({ searchParams }: PageProps<"/contact"
 
           <div className="lg:col-span-8">
             <div className="rounded-2xl border border-rule">
-              <Tabs defaultValue={calendarReady ? "call" : "message"}>
+              <Tabs defaultValue="message">
                 <div className="border-b border-rule px-5 pt-5 sm:px-8">
                   <TabsList className="mb-5">
                     <TabsTrigger value="call">Book a call</TabsTrigger>
