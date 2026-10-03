@@ -9,12 +9,12 @@ export const focusquest = {
   downloadHref: "/downloads/salesforce-daily-quiz.zip",
   privacyHref: "/products/salesforce-daily-quiz/privacy",
 
-  screenshots: [
-    { src: "/products/salesforce-daily-quiz/daily.png", alt: "The daily challenge start screen with the current streak", caption: "Daily challenge" },
-    { src: "/products/salesforce-daily-quiz/quiz.png", alt: "A Salesforce scenario question with the explanation shown", caption: "Question" },
-    { src: "/products/salesforce-daily-quiz/results.png", alt: "Today's score with rank, time and streak", caption: "Result" },
-    { src: "/products/salesforce-daily-quiz/options.png", alt: "Practice settings", caption: "Practice settings" },
-  ],
+  demo: {
+    src: "/products/salesforce-daily-quiz/demo.mp4",
+    poster: "/products/salesforce-daily-quiz/demo-poster.jpg",
+    captions: "/products/salesforce-daily-quiz/demo.vtt",
+    title: "Salesforce Daily Quiz demo",
+  },
 
   install: [
     "Download and unzip.",

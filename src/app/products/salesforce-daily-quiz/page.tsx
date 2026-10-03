@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, ArrowRight } from "lucide-react";
 
@@ -7,6 +6,7 @@ import { Chapter } from "@/components/brief/chapter";
 import { Container } from "@/components/brief/container";
 import { Emphasis } from "@/components/brief/emphasis";
 import { PageHero } from "@/components/brief/page-hero";
+import { DemoPlayer } from "@/components/demo-player";
 import { focusquest } from "@/content/focusquest";
 
 export const metadata: Metadata = {
@@ -44,22 +44,8 @@ export default function SalesforceDailyQuizPage() {
       />
 
       <section>
-        <Container as="ul" className="grid gap-4 pb-7 sm:grid-cols-2">
-          {focusquest.screenshots.map((shot) => (
-            <li key={shot.src}>
-              <figure>
-                <Image
-                  src={shot.src}
-                  alt={shot.alt}
-                  width={1280}
-                  height={800}
-                  sizes="(min-width: 960px) 440px, (min-width: 640px) 50vw, 100vw"
-                  className="aspect-[16/10] h-auto w-full rounded-lg border border-rule bg-paper object-cover"
-                />
-                <figcaption className="annot mt-2">{shot.caption}</figcaption>
-              </figure>
-            </li>
-          ))}
+        <Container className="pb-7">
+          <DemoPlayer {...focusquest.demo} />
         </Container>
       </section>
 
