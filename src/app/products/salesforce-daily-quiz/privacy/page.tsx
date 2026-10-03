@@ -11,7 +11,7 @@ const LEADERBOARD_URL = "https://play.sfdq.workers.dev";
 
 export const metadata: Metadata = {
   title: "Salesforce Daily Quiz privacy policy",
-  description: "How the Salesforce Daily Quiz Chrome extension handles your data: everything stays on your device unless you opt in to the leaderboard.",
+  description: "How the Salesforce Daily Quiz Chrome extension handles your data: your progress and settings stay on your device, and only what is listed here is ever sent.",
   alternates: { canonical: "/products/salesforce-daily-quiz/privacy" },
   robots: { index: false, follow: true },
 };
@@ -22,7 +22,7 @@ export default function SalesforceDailyQuizPrivacyPage() {
       <PageHero
         label="Salesforce Daily Quiz · Legal"
         title="Privacy policy"
-        intro="Short version: by default Salesforce Daily Quiz keeps everything on your device and sends nothing. The leaderboard is optional; if you join, only a few items listed below are sent."
+        intro="Short version: Salesforce Daily Quiz keeps your progress and settings on your device. Questions come from a server, so it makes requests to get them. Joining the leaderboard is optional, and if you join, only the few items listed below are sent."
       />
       <Container className="max-w-3xl pb-7">
         <div className="flex flex-col gap-5 leading-relaxed text-foreground/85">
@@ -36,7 +36,7 @@ export default function SalesforceDailyQuizPrivacyPage() {
             <strong>What the extension handles.</strong> To decide whether to count time, the extension reads the
             address (URL and hostname) of tabs on the sites it tracks, and whether a video is playing on them. It also
             stores what you create or change inside it: your settings, the timer, quiz answers and scores, XP, streaks,
-            achievements, any question banks you import, any custom sites or always-allowed URLs you add, and the
+            achievements, bookmarked and missed question ids, any custom sites or always-allowed URLs you add, and the
             motivational text you write for the lock screen.
           </p>
           <p>
@@ -45,8 +45,11 @@ export default function SalesforceDailyQuizPrivacyPage() {
             Backups you export are files you save and control yourself.
           </p>
           <p>
-            <strong>By default, nothing leaves your device.</strong> The extension has no accounts, and until you
-            choose to join the leaderboard it makes no network requests to send data anywhere.
+            <strong>Questions come from a server.</strong> The extension stores no questions. To load Practice, the
+            unlock quiz or the daily challenge, it asks the server for questions and sends only your practice
+            filters (topics, difficulty, number of questions) and a random seed. No name, code or other identifier is
+            sent with those requests unless you have joined. Questions are held in memory while you play and are not
+            saved on your device. If you report a question, its id and the reason you pick are sent.
           </p>
           <p>
             <strong>The leaderboard is optional and opt-in.</strong> It only starts if you join it in the extension
@@ -62,11 +65,11 @@ export default function SalesforceDailyQuizPrivacyPage() {
           </ul>
           <p>
             Your display name, optional LinkedIn link, score and time are shown publicly on the leaderboard. When you
-            are joined, the extension also fetches the daily challenge set from the leaderboard server.
+            are joined, the extension also sends your answers to the daily challenge so the server can grade them.
           </p>
           <p>
             <strong>What is never sent.</strong> Your browsing history, the sites you visit or the tabs you have open,
-            blocker and timer data, your extension settings, your email address, and your other quiz progress stay on
+            blocker and timer data, your extension settings, your email address, and your practice progress and bookmarks stay on
             your device. The leaderboard uses no cookies and no analytics.
           </p>
           <p>
@@ -94,8 +97,8 @@ export default function SalesforceDailyQuizPrivacyPage() {
           </div>
           <p>
             <strong>Sharing and sale.</strong> No data is sold, transferred or shared with anyone, for any purpose,
-            including advertising, credit-worthiness or lending. If you never join the leaderboard, nothing leaves your
-            device and the developer never has access to it.
+            including advertising, credit-worthiness or lending. If you never join the leaderboard, your progress and
+            settings never leave your device and the developer never has access to them.
           </p>
           <p>
             <strong>Remote code.</strong> The extension does not load or run remote code. Everything it runs ships

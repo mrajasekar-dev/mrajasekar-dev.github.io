@@ -24,7 +24,7 @@ export const focusquest = {
 } as const;
 
 export const focusquestPrivacy = {
-  effectiveDate: "30 September 2026",
+  effectiveDate: "3 October 2026",
   permissions: [
     {
       title: "storage",
